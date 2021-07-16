@@ -1,0 +1,11 @@
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+@import "./utils/utils";
+/** Chargement style global*/
+@import "./bases/base";
+
+/** Chargement style layouts*/
+@import "./layouts/header";   
+@import "./layouts/sections";
+@import "./layouts/footer";
