@@ -1,0 +1,11 @@
+.header{
+  margin-top: 20px;
+  margin-bottom: 40px;
+   @include flex (row, space-between, center);
+   &__filtres{
+      @include flex (row, 0, center);
+      li{
+         margin-right:1rem;
+      }
+   }
+}

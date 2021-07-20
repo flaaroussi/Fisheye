@@ -2,10 +2,13 @@
 @import "./utils/functions";
 @import "./utils/mixins";
 @import "./utils/utils";
-/** Chargement style global*/
-@import "./bases/base";
 
-/** Chargement style layouts*/
+
+
+@import "./bases/base";
+@import "./components/bottons";
+@import "./components/tags";
+@import "./components/bloc_photographe";
+
 @import "./layouts/header";   
 @import "./layouts/sections";
-@import "./layouts/footer";
