@@ -1,0 +1,10 @@
+.dashboard-photographers{
+   display: grid;
+   grid-template-columns: auto auto auto;
+   //space between column gap and row gap.
+   grid-gap: 3rem;
+   margin-bottom: 3rem;
+   article{
+      text-align: center;
+   }
+ }

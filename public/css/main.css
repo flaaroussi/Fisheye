@@ -31,6 +31,21 @@ img {
   height: 100%;
 }
 
+.filtres {
+  display: flex;
+  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+  flex-direction: row;
+  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  justify-content: center;
+  align-items: center;
+}
+.filtres li {
+  margin-right: 0.5rem;
+}
+.filtres li:last-child {
+  margin-right: 0;
+}
+
 .btn {
   border: 1px solid red;
   background-color: #901C1C;
@@ -55,11 +70,21 @@ li a {
   text-decoration: none;
 }
 
-.dashboard-photographes {
-  display: flex;
+.photographer-card img {
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
 }
-.dashboard-photographes article {
-  border: 1px solid red;
+.photographer-card h2 {
+  color: #D3573C;
+  font-size: 2rem;
+  margin-bottom: 0, 7rem;
+}
+.photographer-card .localisation {
+  color: #901C1C;
+}
+.photographer-card .price {
+  color: #A4A4A4;
 }
 
 .header {
@@ -72,15 +97,15 @@ li a {
   justify-content: space-between;
   align-items: center;
 }
-.header__filtres {
-  display: flex;
-  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-  flex-direction: row;
-  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  align-items: center;
+
+.dashboard-photographers {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 3rem;
+  margin-bottom: 3rem;
 }
-.header__filtres li {
-  margin-right: 1rem;
+.dashboard-photographers article {
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */
