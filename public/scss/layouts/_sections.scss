@@ -1,3 +1,5 @@
+
+//stule page index.
 .dashboard-photographers{
    display: grid;
    grid-template-columns: auto auto auto;
@@ -8,9 +10,9 @@
       text-align: center;
    }
  }
-
- .photographer-profil{
-    border:1px solid red;
-    display: flex;
-    justify-content: space-between;
- }
+//style page photographer
+.photographer-profil{
+   border:1px solid red;
+   display: flex;
+   justify-content: space-between;
+}

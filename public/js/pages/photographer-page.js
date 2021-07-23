@@ -35,21 +35,23 @@ const fetchData = async () =>{
 
 function getTemplatePhotographerProfil(x){
    let template = `  
-   <div class="photographer-card"> 
-      <h2>${x.name}</h2>
-      <p class="localisation">${x.city}</p>
-      <p class="tagline">${x.tagline}</p>
-      <ul class="filtres">
+   
+   <article class="photographer-card photographer-card__direction"> 
+      <div class="photographer-infos">
+         <h2>${x.name}</h2>
+         <p class="localisation">${x.city}</p>
+         <p class="tagline">${x.tagline}</p>
+         <ul class="filtres">
             ${x.tags.map(tag => `<li><a class="tag">#${tag}</a></li>`).join(" ")}
-      </ul>  
-   
+         </ul>  
+      </div>
 
-   <button>Contactez-moi</button>
+      <button class="btn">Contactez-moi</button>
    
-   <figure>
-      <img src="${x.portrait}" alt="${x.alt}"/>
-   </figure>
-   </div> 
+      <figure>
+         <img src="${x.portrait}" alt="${x.alt}"/>
+      </figure>
+   </article> 
 
      
    `;

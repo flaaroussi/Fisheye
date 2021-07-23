@@ -12,7 +12,8 @@ body {
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -27,7 +28,8 @@ h1 {
 }
 
 img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -37,16 +39,27 @@ a {
 }
 
 .filtres {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .filtres li {
   margin-right: 0.5rem;
 }
+
 .filtres li:last-child {
   margin-right: 0;
 }
@@ -71,6 +84,7 @@ a {
   padding-top: 1px;
   padding-bottom: 1px;
 }
+
 .tag.active {
   background-color: #901C1C;
   color: #FFFF;
@@ -79,30 +93,44 @@ a {
 .photographer-card {
   width: 100%;
 }
+
 .photographer-card img {
   border-radius: 50%;
   width: 10rem;
   height: 10rem;
 }
+
 .photographer-card h2 {
   color: #D3573C;
   font-size: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
 .photographer-card .localisation {
   color: #901C1C;
 }
+
 .photographer-card .price {
   color: #C4C4C4;
 }
+
 .photographer-card__direction {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*
@@ -136,7 +164,7 @@ nav ul{
 
 .sous{
    display: none;
-
+         
 }//
 //Le sélecteur nav > ul li:hover .sous :Il sert à cibler un sous menu .
 //lorsqu’un utilisateur passe sa souris sur un élt li de la liste représentant notre menu principal.
@@ -175,28 +203,43 @@ p{
 .header {
   margin-top: 20px;
   margin-bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .dashboard-photographers {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: auto auto auto;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
   grid-gap: 3rem;
   margin-bottom: 3rem;
 }
+
 .dashboard-photographers article {
   text-align: center;
 }
 
 .photographer-profil {
   border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
-
 /*# sourceMappingURL=main.css.map */

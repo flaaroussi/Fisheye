@@ -1,6 +1,11 @@
 .btn{
-   border:1px solid red;
+   color:$color-white;
    background-color:$color1 ;
    border-radius:$btn-border-radius;
+   padding-left: 0.5rem;
+   padding-right: 0.5rem;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+   border: none;
    
 }
