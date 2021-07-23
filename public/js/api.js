@@ -2,7 +2,7 @@
 let listPhotographe = [];
 
 const fetchData = async () =>{
-   let url ="/datas/FishEyeData.json";
+   let url = "datas/FishEyeData.json";
    // await interreompt l'execution de la fonction async
    //attend la résolution de la promesse passée Promise. 
    //La fonction asynchrone reprend ensuite puis renvoie la valeur de résolution.
