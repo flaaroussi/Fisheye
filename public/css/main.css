@@ -31,6 +31,10 @@ img {
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
 .filtres {
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
@@ -64,10 +68,6 @@ img {
 .tag.active {
   background-color: #901C1C;
   color: #FFFF;
-}
-
-li a {
-  text-decoration: none;
 }
 
 .photographer-card img {
@@ -106,6 +106,12 @@ li a {
 }
 .dashboard-photographers article {
   text-align: center;
+}
+
+.photographer-profil {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+
+      
+      nav a:hover{
+         color :red;
+      }
+      .sous{
+         display:none;
+      }
+      .dropdown{
+         display: block;
+      }
+      .sous li{
+         text-align: left;
+         width: 100%;
+      }
+      .sous a:hover{
+         background-color: tomato;
+      }
+      .deroulant ::after{
+         content: "▼";
+         font-size: 12px;
+      }
+      
+
+   </style>
+   <title>Document</title>
+</head>
+<body>
+   
+
+
+
+
+
+
+
+<nav>
+   <ul>
+      <!--&ensp=espace-->
+      <li class="dropdown" a href="#">Popularité &ensp
+         <ul class="sous">
+            <li a href="#">Date</li>
+            <li a href="#">Titre</li>
+         </ul>
+      </li>
+   </ul>
+</nav>
+
+</body>
+</html>
