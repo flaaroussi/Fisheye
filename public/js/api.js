@@ -1,4 +1,6 @@
 //Etape 1: Récuperation des données à partir du fichier jason.
+let listPhotographe = [];
+
 const fetchData = async () =>{
    let url ="/data/FishEyeData.json";
    // await interreompt l'execution de la fonction async
@@ -12,21 +14,9 @@ const fetchData = async () =>{
    //variable data stocke les données sous format json.
    const data = await resultat.json();
   
-   let listPhotographe = data.photographers;
-   let elt = document.getElementById("dashboard_photographers");
-
-   for(let i=0; i<listPhotographe.length;i++){     
-      //Creation des blocs des 6 photographes.
-      let article = document.createElement("article");
-      article.className = "photographer-card";
-      
-
-      let photographe = listPhotographe[i];
-      article.innerHTML = getTemplatePhotographer(photographe); 
-      
-      
-      elt.appendChild(article)      
-   }
+   listPhotographe = data.photographers;
+   displayPhotographers();
+   
 }
 
 //Etatpe 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
@@ -57,4 +47,34 @@ function getTemplatePhotographer(x){
 }
 
 fetchData();
+
+//filtre 
+let currentfiltre = null;
+
+//selection de filtre
+function setfilter(filtre){
+   document.getElementById('filtre_' + filtre).className="tag active";
+   currentfiltre = filtre;
+   displayPhotographers();
+}
+console.log(setfilter);
+//afficher les photographes selon le filtre choisi.
+function displayPhotographers(){
+   //TODO filtrer les photographes d'apres le filtre selectionné.
+   let elt = document.getElementById("dashboard_photographers");
+   elt.innerHTML = "";
+   for(let i=0; i<listPhotographe.length;i++){     
+      //Creation des blocs des 6 photographes.
+      let article = document.createElement("article");
+      article.className = "photographer-card";
+      
+
+      let photographe = listPhotographe[i];
+      article.innerHTML = getTemplatePhotographer(photographe); 
+      
+      
+      elt.appendChild(article)      
+   }
+
+}
 
