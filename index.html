@@ -10,8 +10,7 @@
 </head>
 
 <body>
-   <header class="header" role="banner">
-
+   <header class="header" role="banner">     
       <!--Logo FicheEye-->
       <figure>
          <img src="public/images/logo/logo.png" alt="Fisheye Home page">
@@ -19,6 +18,7 @@
       <!--menu de navigation-->
       <nav aria-label="photographer categories" role="navigation" class="header-nav">
          <ul class="filtres" id="header__filtres">
+            <!--data-filtre:premet de stocker-->
             <li><a data-filtre="portrait" href="#" class="tag">#Portrait</a></li>
             <li><a data-filtre="art" href="#" class="tag">#Art</a></li>
             <li><a data-filtre="fashion" href="#" class="tag">#Fashion</a></li>
@@ -32,11 +32,9 @@
       <!--Titre-->
       <h1>Nos photographes</h1>
    </header>
-   <main>
-      <section id="dashboard_photographers" class="dashboard-photographers">
-
-      </section>
-
+   <main id="main_home">
+      <a id="access_main" class="access-main" aria-label="Passer au contenu" href="#main_home">Passer au contenu</a>
+      <section id="dashboard_photographers" class="dashboard-photographers"></section>
    </main>
 
 

@@ -1,14 +1,19 @@
-import FetchApi from "./FetchApi.js";
-import Filter from "./pages/home/Filter.js";
+import FisheyeApi from "./FisheyeApi.js";
 import HomePage from "./pages/home/HomePage.js";
 
+//creation d'une instance de l'api.
+const fisheyeApi = new FisheyeApi();
 
-const fApi = new FetchApi();
-fApi.fetchData().then(data => {
-   const hPage = new HomePage();
-   hPage.displayPhotographers(data);
+//retourner les données de json.
+fisheyeApi.fetchData()
+.then(data => {
 
-   const filter = new Filter();
-   filter.doFilter();
-});
+   //afficher la liste des photographe
+   const homePage= new HomePage();
+   homePage.displayPhotographers(data.photographers);
+   homePage.initFilter(data.photographers);
+   homePage.initScroll();
+
+   
+})
 
