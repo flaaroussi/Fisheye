@@ -6,8 +6,6 @@
 export default class PhotographerPage {
 
   displayProfil(photographers) {
-     console.log(photographers);
-
                   
       let ident = this.getPhotographerId();
 
@@ -54,7 +52,7 @@ export default class PhotographerPage {
 
 
       let elt = document.getElementById("photographer_media");
-      elt.innerHTML = "en cour de traitement";
+      elt.innerHTML = "";
 
       let ident = this.getPhotographerId();
 
@@ -65,30 +63,56 @@ export default class PhotographerPage {
 
       phtographerMedia.forEach(currentMedia =>{
       
-         console.log(currentMedia);
          let article = document.createElement("article");
-         article.className = "media_card";  
-   
-         article.innerHTML = this.getTemplateMedia(currentMedia);       
+         article.className = "media-card";  
+         
+         //Afficher soit image soit video
+            //
+         if(currentMedia.hasOwnProperty("image") ){
+            article.innerHTML = this.getTemplateImage(currentMedia);
+         }else if (currentMedia.hasOwnProperty("video") ){
+            article.innerHTML = this.getTemplateVideo(currentMedia);  
+         }else{
+            article.innerHTML = "Media non disponible";
+         }
          
          elt.appendChild(article)      
       })
+      //l'ajout d'un like lorsqu'on click sur le coeur.
+      this.addLikes();
+   }
+   
+   //Création element Image
+   getTemplateImage(x){
+      let template = ` 
+                  <figure class="media">
+                     <img src="./public/images/${x.photographerId}/${x.image}" alt="${x.alt}"/>
+                     <figcaption class="media-footer">
+                        <h2>${x.title}</h2>
+                        <!--data-like pour savoir est ce que le coueur est deja liké --> 
+                        <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
+                           <span>${x.likes}</span>
+                           <i class="fas fa-heart"></i>
+                        </div>   
+                     </figcaption>
+                  </figure>
+      `;
+
+      return template;
    }
 
-   getTemplateMedia(x){
+   //Création element Viodéo
+   getTemplateVideo(x){
       let template = ` 
-         <article class="photographer-media photographer-media__direction"> 
-               <div class="photographer-infos">
-                  <figure>
-                     <img src="${x.image}" alt="${x.title}"/>
-                  </figure>
-
-                  <h2>${x.title}</h2>
-                  <P>${x.date}</P>
-                  <span>${x.like}</span>
-                  
-         </article>  
-         
+                  <video class="media" controls  poster=""><source src="./public/images/${x.photographerId}/${x.video}" /></video>
+                  <div class="media-footer">  
+                     <h2>${x.title}</h2>
+                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
+                        <span>${x.likes}</span>
+                        <i class="fas fa-heart"></i>
+                     </div>
+                  </div> 
+               </div>   
       `;
 
       return template;
@@ -101,4 +125,41 @@ export default class PhotographerPage {
       
       return ident;
    }
+
+//ajouter un like
+   addLikes(){
+      let totalLikes = document.querySelectorAll(".totalLikes");
+      
+      totalLikes.forEach(currentElt =>{
+         currentElt.addEventListener("click",event => {
+            
+
+            //je selectionne child du div class="totalLikes"
+            let eltNbreLike = currentElt.childNodes;
+            //eltNbreLike[1].textContent :je selectionne le deuxieme child./ 
+            let currentTotalLike = parseInt(eltNbreLike[1].textContent);
+            
+            let stateLike = currentElt.getAttribute("data-like");
+
+            if(stateLike == 0){
+               currentElt.setAttribute("data-like", 1);
+               currentTotalLike++;
+
+               console.log('like');
+
+               //annuler le premier click (deuxieme click).
+            }else {
+               currentElt.setAttribute("data-like", 0);  
+               currentTotalLike--; 
+               console.log('déslike');  
+
+            }
+            
+           eltNbreLike[1].textContent = currentTotalLike; 
+
+         })
+      })   
+   }
 }
+
+

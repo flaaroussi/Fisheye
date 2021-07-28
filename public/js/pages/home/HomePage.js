@@ -32,7 +32,6 @@ export default class HomePage{
 
             //event.target.classList.value:je recupere la valeur de l'element (liste des class css ) ciblé par un click.            
            //indexof permet de chercher le mot'actived' dans la classList.
-           // console.log(event.target.classList.value.indexOf('actived'));
            if(event.target.classList.value.indexOf('actived') >= 0){
                event.target.classList.remove('actived')
             }else{
@@ -62,7 +61,7 @@ export default class HomePage{
       let template = `  
       <a href="photographer-page.html?id=${x.id}">
       <figure>
-         <img src="${x.portrait}" alt="${x.alt}"/>
+         <img src="./public/images/Photographers/${x.portrait}" alt="${x.alt}"/>
          <figcaption><h2>${x.name}</h2></figcaption>
       </figure>
       </a>

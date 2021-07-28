@@ -12,11 +12,43 @@
  }
 //style page photographer
 .photographer-profil{
-   border:1px solid red;
    display: flex;
    justify-content: space-between;
 }
 
-.photographer-media{
-   border: 1px solid red;
+
+
+
+//section media
+//style media
+.media-card{
+   width: 100%;
+   border-radius: 4px;
+   img,
+   video{
+      width: 100%;
+      height: 15rem;
+      object-fit: cover;
+   }
+   .media-footer{
+      @include flex (row, space-between, center);
+      padding-top: 0.2rem;
+      .fa-heart,
+      span,
+      h2{
+         color :$color1;
+      }
+      .fa-heart,
+      span{
+         cursor: pointer;
+      }
+   }
+   
 }
+
+.photographer-media{
+   display: grid;
+   grid-template-columns: auto auto auto;
+   grid-gap: 3rem;
+   margin-bottom: 3rem;
+ }
