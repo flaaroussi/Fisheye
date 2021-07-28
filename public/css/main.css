@@ -143,6 +143,97 @@ a {
   text-align: left;
 }
 
+.content {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 300px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #D3573C;
+  opacity: 0.8;
+  overflow: hidden;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+label {
+  font-family: var(--font-default);
+  font-size: 17px;
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
+}
+
+input {
+  padding: 8px;
+  outline: none;
+}
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  font-size: 20px;
+  height: 48px;
+  border-radius: 4px;
+  border-style: hidden;
+}
+
+.form {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+textarea {
+  resize: none;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+  width: 100%;
+}
+
+.titre_modal {
+  padding: 8px;
+  font-size: 28px;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.btn_envoyer {
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .header {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -170,14 +261,17 @@ a {
   justify-content: space-between;
 }
 
+.photographer-media {
+  border: 1px solid red;
+}
+
 .access-main {
   background-color: #D3573C;
   position: fixed;
   top: 4px;
+  left: 50%;
   display: none;
-}
-.access-main a {
-  text-decoration: none;
+  color: black;
 }
 
 /*# sourceMappingURL=main.css.map */

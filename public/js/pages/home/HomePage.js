@@ -2,19 +2,20 @@
 export default class HomePage{
 
    displayPhotographers(listPhotographe){
-      console.log(listPhotographe)
       let elt = document.getElementById("dashboard_photographers");
       elt.innerHTML = "";
-      for(let i=0; i<listPhotographe.length;i++){     
+
+      listPhotographe.forEach(currentPhotographer =>{
+      //for(let i=0; i<listPhotographe.length;i++){     
          //Creation des blocs des 6 photographes.
+         console.log(currentPhotographer);
          let article = document.createElement("article");
          article.className = "photographer-card";  
    
-         let photographe = listPhotographe[i];
-         article.innerHTML = this.getTemplatePhotographer(photographe);       
+         article.innerHTML = this.getTemplatePhotographer(currentPhotographer);       
          
          elt.appendChild(article)      
-      }
+      })
    }
 
    /**
@@ -24,9 +25,11 @@ export default class HomePage{
       let listTag = document.querySelectorAll(".header-nav a.tag");
       listTag.forEach(currentTag => {
          currentTag.addEventListener('click', event => {
+            
             listTag.forEach(tag =>{
-               tag.classList.remove('actived');
+               if(currentTag != tag) tag.classList.remove('actived');
             })
+
             //event.target.classList.value:je recupere la valeur de l'element (liste des class css ) ciblé par un click.            
            //indexof permet de chercher le mot'actived' dans la classList.
            // console.log(event.target.classList.value.indexOf('actived'));
@@ -53,10 +56,6 @@ export default class HomePage{
       })
    }
 
-
-
-
-   
 
   //Etatpe 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
   getTemplatePhotographer(x){

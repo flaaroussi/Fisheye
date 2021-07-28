@@ -4,7 +4,7 @@
 /**
  * Class pour la gestion de l'api >> pour comminiquer ihm evec backend
  */
-export default class FetchApi{
+export default class FisheyeApi{
 
    async fetchData(){
       let url = "datas/FishEyeData.json";
@@ -23,6 +23,6 @@ export default class FetchApi{
    }
 
 
-   
+
 
 } 

@@ -20,11 +20,17 @@
    </header>
 
    <main>
+      <!--profil photographer-->
       <section id="photographer_profil" class="photographer-profil">
-
          <!--code page photographer-->
+      </section>
+
+      <!--Media photographer-->
+      <section  id="photographer_media" class="photographer-media">
+         <!--code media photographer-->
 
       </section>
+
    </main>
    
 
@@ -33,27 +39,34 @@
       <div class="bground">
          <div class="content">
 
-
+            <!--Fermeture du modal-->
             <span class="close"></span>
             <div class="modal-contact" aria-hidden="true" role="dialog" aria-describedby="modalContact">
-               <h2>Contacter-moi</h2>
-               <form name="reserve" *action="index.html" *aria-labelledby="" method="get" onsubmit="return validate();">
+               <!--Titre du modal-->
+               <h2 class="titre_modal">Contacter-moi</h2>
+               <!--Formulaire à remplir-->
+               <form class="form" name="formulaire" *action="index.html" *aria-labelledby="" method="get" onsubmit="return validate();">
                   <div class="formData">
-                     <label>Prénom</label><br>
-                     <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+                     <label class="" for="first-name">Prénom</label><br>
+                     <input class="text-control" type="text" id="first-name" name="first" minlength="2" /><br>
                   </div>
+
                   <div class="formData">
-                     <label>Nom</label><br>
-                     <input class="text-control" type="text" id="last" name="last" /><br>
+                     <label class="" for="last-name">Nom</label><br>
+                     <input class="text-control" type="text" id="last-name" name="last" /><br>
                   </div>
+
                   <div class="formData">
-                     <label>E-mail</label><br>
+                     <label class="email" for="">Email</label><br>
                      <input class="text-control" type="email" id="email" name="email" /><br>
                   </div>
+
                   <div class="formData">
-                     <label>Message</label><br>
-                     <input class="text-control" type="textarea" id="message" name="message" /><br>
+                     <label class="" for="message" >Votre message</label><br>
+                     <textarea  id="message" name="your message" rows="4" cols="5">Vous pouvez écrire içi.</textarea><br>
                   </div>
+                  <button class="btn btn_envoyer">Envoyer</button>
+
                </form>
             </div>
          </div>
@@ -64,7 +77,8 @@
 
 
 
-   <script type="module" src="public/js/pages/photographer/photographer-page.js"></script>
+   <script type="module" src="public/js/pages/photographer/main.js"></script>
+   <script src="public/js/pages/photographer/modal.js"></script>
 
 </body>
 
