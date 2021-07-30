@@ -32,20 +32,26 @@ export default class HomePage{
 
             //event.target.classList.value:je recupere la valeur de l'element (liste des class css ) ciblé par un click.            
            //indexof permet de chercher le mot'actived' dans la classList.
+
+           
+           let tagSelected = null; 
            if(event.target.classList.value.indexOf('actived') >= 0){
-               event.target.classList.remove('actived')
+               event.target.classList.remove('actived');   
             }else{
-               event.target.classList.add('actived')
+               event.target.classList.add('actived');
+               tagSelected = event.target.getAttribute('data-filtre');
             } 
 
-
-            let tagSelected = event.target.getAttribute('data-filtre');
             let listPhotographe = [];
-            photographe.forEach(x => {
-               if(x.tags.indexOf(tagSelected) >= 0){
-                  listPhotographe.push(x)
-               }
-            })  
+            if(tagSelected){               
+               photographe.forEach(x => {
+                  if(x.tags.indexOf(tagSelected) >= 0){
+                     listPhotographe.push(x)
+                  }
+               })  
+            }else{
+               listPhotographe = photographe;
+            }           
 
             // let listPhotographe = photographers.filter(photographer => photographer.tags.includes(tagSelected));
             

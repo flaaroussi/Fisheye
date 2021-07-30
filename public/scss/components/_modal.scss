@@ -1,9 +1,18 @@
+.bground{
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+height: 100%;
+width: 100%;
+overflow: auto;
+}
+
 .content {
    margin: 5% auto;
    width: 100%;
-   max-width: 300px;
-   animation-name: modalopen;
-   animation-duration: var(--modal-duration);
+   max-width: 350px;
    background: $color2;
    opacity: 0.8;
    overflow: hidden;
@@ -13,7 +22,6 @@
  }
 
  label {
-   font-family: var(--font-default);
    font-size: 17px;
    font-weight: normal;
    display: inline-block;
@@ -83,3 +91,6 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
  }
+ .modal-btn {
+   cursor: pointer;
+}

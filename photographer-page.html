@@ -24,7 +24,7 @@
       <!--profil photographer-->
       <section id="photographer_profil" class="photographer-profil">
          <!--code page photographer-->
-      </section>
+      </section>      
 
       <!--Media photographer-->
       <section  id="photographer_media" class="photographer-media">
@@ -35,16 +35,17 @@
    </main>
    
 
-
+   <!--Modal-->
    <section>
+      <div class="bgroundCover">
       <div class="bground">
          <div class="content">
-
             <!--Fermeture du modal-->
             <span class="close"></span>
             <div class="modal-contact" aria-hidden="true" role="dialog" aria-describedby="modalContact">
                <!--Titre du modal-->
                <h2 class="titre_modal">Contacter-moi</h2>
+               <h3 class="titre_modal" id="modal_photographer_name"></h3>
                <!--Formulaire à remplir-->
                <form class="form" name="formulaire" *action="index.html" *aria-labelledby="" method="get" onsubmit="return validate();">
                   <div class="formData">
@@ -59,7 +60,7 @@
 
                   <div class="formData">
                      <label class="email" for="">Email</label><br>
-                     <input class="text-control" type="email" id="email" name="email" /><br>
+                     <input class="text-control" type="email" id="email" name="email" placeholder="nomutilisateur@example.com" minlength="3" maxlength="64"/><br>
                   </div>
 
                   <div class="formData">
@@ -72,14 +73,15 @@
             </div>
          </div>
       </div>
+   </div>
 
 
    </section>
 
 
-
    <script type="module" src="public/js/pages/photographer/main.js"></script>
-   <script src="public/js/pages/photographer/modal.js"></script>
+   
+
 
 </body>
 

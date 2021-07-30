@@ -1,5 +1,5 @@
 
-//stule page index.
+//style page index.
 .dashboard-photographers{
    display: grid;
    grid-template-columns: auto auto auto;
@@ -10,26 +10,38 @@
       text-align: center;
    }
  }
+
 //style page photographer
 .photographer-profil{
    display: flex;
    justify-content: space-between;
+   background-color: $color4 ;
+   padding:2rem;
+   margin-bottom: 2rem;
 }
 
 
-
-
 //section media
-//style media
+.photographer-media{
+   display: grid;
+   grid-template-columns: auto auto auto;
+   grid-gap: 3rem;
+   margin-bottom: 3rem;
+ }
+
 .media-card{
    width: 100%;
    border-radius: 4px;
+   .media{
+      width:100%;
+   }
    img,
    video{
       width: 100%;
-      height: 15rem;
+      height: 22rem;
       object-fit: cover;
    }
+
    .media-footer{
       @include flex (row, space-between, center);
       padding-top: 0.2rem;
@@ -46,9 +58,3 @@
    
 }
 
-.photographer-media{
-   display: grid;
-   grid-template-columns: auto auto auto;
-   grid-gap: 3rem;
-   margin-bottom: 3rem;
- }

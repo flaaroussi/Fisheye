@@ -2,7 +2,7 @@
 //recupere les données d'un photographe selon son id figurant dans l'url
 //on creer un element 'article'ou on fait apparaitre le photographe selectionné par la l'appele de 
 //la fonction getTemplatePhotographerProfil
-
+import Modal from "./Modal.js"
 export default class PhotographerPage {
 
   displayProfil(photographers) {
@@ -16,10 +16,16 @@ export default class PhotographerPage {
       // photographer_profil
       let elt = document.getElementById("photographer_profil");
       elt.innerHTML = this.getTemplatePhotographerProfil(phtographeSelectionne[0]);
+      //ajout name du photographe dans le modal.
+      document.getElementById("modal_photographer_name").textContent = phtographeSelectionne[0].name;
+      // initialize le modal
+      const modal = new Modal()
+      modal.initModal();
    }
 
 
    //Etatpe 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
+   //x=phtographeSelectionne[0].
    getTemplatePhotographerProfil(x) {
       let template = `  
          <article class="photographer-card photographer-card__direction"> 
@@ -32,10 +38,10 @@ export default class PhotographerPage {
                </ul>  
             </div>
 
-            <button class="btn">Contactez-moi</button>
+            <button class="btn modal-btn">Contactez-moi</button>
          
             <figure>
-               <img src="${x.portrait}" alt="${x.alt}"/>
+               <img src="./public/images/Photographers/${x.portrait}" alt="${x.alt}"/>
             </figure>
          </article> 
          `;
@@ -92,7 +98,8 @@ export default class PhotographerPage {
                         <!--data-like pour savoir est ce que le coueur est deja liké --> 
                         <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
                            <span>${x.likes}</span>
-                           <i class="fas fa-heart"></i>
+                           <i class="far fa-heart"></i>
+
                         </div>   
                      </figcaption>
                   </figure>
@@ -107,9 +114,7 @@ export default class PhotographerPage {
                   <video class="media" controls  poster=""><source src="./public/images/${x.photographerId}/${x.video}" /></video>
                   <div class="media-footer">  
                      <h2>${x.title}</h2>
-                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
-                        <span>${x.likes}</span>
-                        <i class="fas fa-heart"></i>
+                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${x.likes}</span> <i class="far fa-heart"></i>
                      </div>
                   </div> 
                </div>   
@@ -134,28 +139,30 @@ export default class PhotographerPage {
          currentElt.addEventListener("click",event => {
             
 
-            //je selectionne child du div class="totalLikes"
-            let eltNbreLike = currentElt.childNodes;
+            let eltNbreLike = currentElt.querySelector("span");
             //eltNbreLike[1].textContent :je selectionne le deuxieme child./ 
-            let currentTotalLike = parseInt(eltNbreLike[1].textContent);
+            let currentTotalLike = parseInt(eltNbreLike.textContent);
             
             let stateLike = currentElt.getAttribute("data-like");
-
+            let iconeCoeur = currentElt.querySelector("i")
             if(stateLike == 0){
                currentElt.setAttribute("data-like", 1);
                currentTotalLike++;
+               currentElt.setAttribute("title", "Je n'aime pas");
+               //je selectionne l'icone coeur et je change le coeur vide(far fa-heart) par un coeur rempli (fas fa-heart)
+               //methode 2 : add et remove.
+               iconeCoeur.classList.value = "fas fa-heart";
 
-               console.log('like');
-
-               //annuler le premier click (deuxieme click).
+               //annuler le premier click (le deuxieme click).
             }else {
                currentElt.setAttribute("data-like", 0);  
-               currentTotalLike--; 
-               console.log('déslike');  
+               currentTotalLike--;
+               currentElt.setAttribute("title", "J'aime");
+               iconeCoeur.classList.value = "far fa-heart";
 
             }
             
-           eltNbreLike[1].textContent = currentTotalLike; 
+            eltNbreLike.textContent = currentTotalLike; 
 
          })
       })   

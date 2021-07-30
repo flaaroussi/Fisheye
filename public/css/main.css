@@ -57,10 +57,7 @@ a {
   color: #FFFF;
   background-color: #901C1C;
   border-radius: 4px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   border: none;
 }
 
@@ -143,12 +140,21 @@ a {
   text-align: left;
 }
 
+.bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 300px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  max-width: 350px;
   background: #D3573C;
   opacity: 0.8;
   overflow: hidden;
@@ -158,7 +164,6 @@ a {
 }
 
 label {
-  font-family: var(--font-default);
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
@@ -234,6 +239,10 @@ textarea {
   padding-bottom: 0.5rem;
 }
 
+.modal-btn {
+  cursor: pointer;
+}
+
 .header {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -258,16 +267,29 @@ textarea {
 .photographer-profil {
   display: flex;
   justify-content: space-between;
+  background-color: #FAFAFA;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.photographer-media {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 3rem;
+  margin-bottom: 3rem;
 }
 
 .media-card {
   width: 100%;
   border-radius: 4px;
 }
+.media-card .media {
+  width: 100%;
+}
 .media-card img,
 .media-card video {
   width: 100%;
-  height: 15rem;
+  height: 22rem;
   object-fit: cover;
 }
 .media-card .media-footer {
@@ -289,13 +311,6 @@ textarea {
   cursor: pointer;
 }
 
-.photographer-media {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 3rem;
-  margin-bottom: 3rem;
-}
-
 .access-main {
   background-color: #D3573C;
   position: fixed;
@@ -303,6 +318,10 @@ textarea {
   left: 50%;
   display: none;
   color: black;
+}
+
+.photographer-infos * {
+  line-height: 1.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */
