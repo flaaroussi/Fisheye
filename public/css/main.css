@@ -54,7 +54,7 @@ a {
 }
 
 .btn {
-  color: #FFFF;
+  color: #FFFFFF;
   background-color: #901C1C;
   border-radius: 4px;
   padding: 1rem;
@@ -72,7 +72,7 @@ a {
 }
 .tag.actived {
   background-color: #901C1C;
-  color: #FFFF;
+  color: #FFFFFF;
   border: 1px solid #901C1C;
 }
 
@@ -107,14 +107,14 @@ a {
 
 .menu {
   border: 1px solid yellow;
-  color: #FFFF;
+  color: #FFFFFF;
   background: #901C1C;
   width: 100px;
   height: 50px;
 }
 .menu a:hover {
-  color: #FFFF;
-  border-bottom: 1px solid #FFFF;
+  color: #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
 }
 .menu .dropdown {
   display: block;
@@ -149,14 +149,14 @@ a {
   height: 100%;
   width: 100%;
   overflow: auto;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 350px;
+  max-width: 500px;
   background: #D3573C;
-  opacity: 0.8;
   overflow: hidden;
   position: relative;
   padding-top: 10px;
@@ -241,6 +241,15 @@ textarea {
 
 .modal-btn {
   cursor: pointer;
+}
+
+/*Style message d'erreur.*/
+.error {
+  color: #FF0000;
+  font-size: 14px;
+  background-color: yellow;
+  border: 1px solid red;
+  padding: 1rem;
 }
 
 .header {
