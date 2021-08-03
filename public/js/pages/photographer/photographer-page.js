@@ -8,30 +8,29 @@ import Modal from "./Modal.js"
 export default class PhotographerPage {
 
    displayProfil(photographers) {
-
       let ident = this.getPhotographerId();
       // photographer_profil
       let elt = document.getElementById("photographer_profil");
-      let phtographeSelectionne = photographers.filter(currentPhotographer => currentPhotographer.id == ident);
+      let photographeSelectionne = photographers.filter(currentPhotographer => currentPhotographer.id == ident);
 
       // si on a un id non connu on affiche un message d'erreur
-      //donc ajouter la condition suivante :phtographeSelectionne[0].length:au moins un photographe existe.
-      if(phtographeSelectionne[0]){         
-         elt.innerHTML = this.getTemplatePhotographerProfil(phtographeSelectionne[0]);
+      //donc ajouter la condition suivante :photographeSelectionne[0].length:au moins un photographe existe.
+      if(photographeSelectionne[0]){         
+         elt.innerHTML = this.getTemplatePhotographerProfil(photographeSelectionne[0]);
       }else{
          elt.innerHTML = "Veuillez sélectionner un photographer";
          return;
       }
       
       //ajout name du photographe dans le modal.
-      document.getElementById("modal_photographer_name").textContent = phtographeSelectionne[0].name;
+      document.getElementById("modal_photographer_name").textContent = photographeSelectionne[0].name;
       // initialize le modal
       const modal = new Modal()
       modal.initModal();
    }
 
    //Etatpe 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
-   //x=phtographeSelectionne[0].
+   //x=photographeSelectionne[0].
    getTemplatePhotographerProfil(x) {
       let template = `  
          <article class="photographer-card photographer-card__direction"> 
@@ -47,16 +46,77 @@ export default class PhotographerPage {
                <div>
                   <button class="btn modal-btn">Contactez-moi</button>
                </div>
-
             </div>
             <figure>
                <img src="./public/images/Photographers/${x.portrait}" alt="${x.alt}"/>
             </figure>
          </article> 
          `;
-
       return template;
    }
+
+   //Création d'un tri.
+      
+   initTri(medias){
+      let triCombo = document.getElementById('media-tri-combo');
+      // selectionner popularité par défaut
+      triCombo.value = "popularite";
+
+      triCombo.addEventListener("change",event =>{
+         this.triMedia(medias, triCombo.value);
+      })         
+      
+   }
+
+   triMedia(medias, optionTri){
+
+      //Recuperation de l'id du photographe à afficher dans la page photographe.
+      let ident = this.getPhotographerId();
+      //Permission de filter les medias du photographe à afficher dans la page photographe.
+      let photographerMedia = medias.filter(currentMedia => currentMedia.photographerId == ident);
+      // tri des medias par option sélectionnée
+
+      console.log(photographerMedia);
+
+      switch(optionTri){
+         case 'popularite' : 
+            /// tritemen du tri pa popularite
+            photographerMedia.sort(function (a, b) {
+               return b.likes - a.likes;
+            });
+          break;
+
+         case 'titre' :
+            photographerMedia.sort(function (c,d) {
+               if(d.title > c.title){
+                  return -1;
+               }else{
+                  return 1;
+               }
+            });
+
+         break;
+
+         case 'date' :
+            photographerMedia.sort(function(a, b) {
+               a = new Date(a.date);
+               b = new Date(b.date);
+               return a>b ? -1 : a<b ? 1 : 0;
+           });  
+         break;   
+
+      }
+
+      // affichage des media tri
+
+      this.displayMedia(photographerMedia);
+
+
+     console.log(photographerMedia);
+     console.log(optionTri);
+   }
+
+
 
    /**
     * Traitement media par photographe
@@ -64,14 +124,12 @@ export default class PhotographerPage {
     */
 
    displayMedia(listMedia) {
-
-
       let elt = document.getElementById("photographer_media");
       elt.innerHTML = "";
       let ident = this.getPhotographerId();
-      let phtographerMedia = listMedia.filter(currentMedia => currentMedia.photographerId == ident);
+      let photographerMedia = listMedia.filter(currentMedia => currentMedia.photographerId == ident);
 
-      phtographerMedia.forEach(currentMedia => {
+      photographerMedia.forEach(currentMedia => {
          let article = document.createElement("article");
          article.className = "media-card";
 
@@ -96,7 +154,8 @@ export default class PhotographerPage {
                   <figure class="media">
                      <img src="./public/images/${x.photographerId}/${x.image}" alt="${x.alt}"/>
                      <figcaption class="media-footer">
-                        <h2>${x.title}</h2>
+                        <h2>${x.title} - ${x.date}</h2>
+
                         <!--data-like pour savoir est ce que le coueur est deja liké --> 
                         <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
                            <span>${x.likes}</span>

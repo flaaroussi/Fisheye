@@ -66,9 +66,9 @@ export default class HomePage{
   getTemplatePhotographer(x){
       let template = `  
       <a href="photographer-page.html?id=${x.id}">
-      <figure>
+      <figure >
          <img src="./public/images/Photographers/${x.portrait}" alt="${x.alt}"/>
-         <figcaption><h2>${x.name}</h2></figcaption>
+         <figcaption><h2 class="h2-homepage">${x.name}</h2></figcaption>
       </figure>
       </a>
    

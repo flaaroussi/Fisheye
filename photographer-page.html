@@ -12,7 +12,7 @@
 
 <body>
 
-   <header class="header" role="banner">
+   <header class="header" role="banner" aria-hidden="false">
       <a href="index.html">
          <figure>
             <img src="./public/images/logo/logo.png" alt="Fisheye Home page">
@@ -20,11 +20,26 @@
       </a>
    </header>
 
-   <main>
+   <main class="photographe-main" aria-hidden="false">
       <!--profil photographer-->
       <section id="photographer_profil" class="photographer-profil">
          <!--code page photographer-->
       </section>      
+
+
+      <!--Tri -->
+      <section class="media-tri">
+
+         <label for="media-tri-combo">Tri par</label>
+
+         <select name="tri" id="media-tri-combo">
+            <option value="popularite">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+         </select>
+      </section>
+
+
 
       <!--Media photographer-->
       <section  id="photographer_media" class="photographer-media">
@@ -36,18 +51,17 @@
    
 
    <!--Modal-->
-   <section>
-      <div class="bgroundCover">
-      <div class="bground">
+  
+      <div class="bground" class="modal-contact" aria-hidden="true" role="dialog" aria-describedby="modalContact">
          <div class="content">
             <!--Fermeture du modal-->
             <span class="close"></span>
-            <div class="modal-contact" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+            <div >
                <!--Titre du modal-->
                <h2 class="titre_modal">Contacter-moi</h2>
                <h3 class="titre_modal" id="modal_photographer_name"></h3>
                <!--Formulaire à remplir-->
-               <form class="form" name="formulaire" *action="index.html" *aria-labelledby="" method="get" onsubmit="return validate();">
+               <form class="form" name="formulaire" action="#" aria-labelledby="modalContact" method="get" onsubmit="return validate();">
                   <div class="formData">
                      <label class="" for="first-name">Prénom</label><br>
                      <input class="text-control" type="text" id="first-name" name="first" minlength="2" data-error-visible=""/><br>
@@ -77,10 +91,8 @@
             </div>
          </div>
       </div>
-   </div>
 
 
-   </section>
 
 
    <script type="module" src="public/js/pages/photographer/main.js"></script>

@@ -48,6 +48,9 @@ background:rgba(0,0,0,0.4);
    padding-left: 10px;
    padding-right: 10px;
  }
+ .formData{
+   margin-bottom: 0.6rem;
+ }
 
  textarea{
    resize: none;
@@ -101,6 +104,4 @@ background:rgba(0,0,0,0.4);
   color :$color-error;
   font-size: 14px;
   background-color: yellow;
-  border: 1px solid red;
-  padding: 1rem;
 }

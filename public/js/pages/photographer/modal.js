@@ -2,40 +2,45 @@
 
 export default class Modal {
 
-  modalBtn = document.querySelectorAll(".modal-btn");
+  modalBtn = document.querySelector(".modal-btn");
   modalbg = document.querySelector(".bground");
+  modalClose = document.querySelector(".close");
 
   initModal() {
-    // Open modal event
-    this.modalBtn.forEach(btn => {
-      btn.addEventListener("click", event => {
-        this.openModal();
-      })
+
+    this.modalBtn.addEventListener("click", event => {
+      this.openModal();
     });
+
+    this.modalClose.addEventListener("click", event => {
+      this.doCloseModal();
+    })
     //Initialisation des controles.
-    this.controleForm();
+      this.controleForm();
   }
 
-  // Open modal form
   openModal() {
     this.modalbg.style.display = "block";
+    document.querySelector('.modal-contact').setAttribute("aria-hidden","false");
+    document.querySelector('.photographe-main').setAttribute("aria-hidden","true");
+    document.querySelector('.header').setAttribute("aria-hidden","true");
   }
 
-  // Open modal form
-  //Fermer le formulaire = modal.
-  modalClose = document.querySelector(".close");
   doCloseModal() {
-    this.modalClose.addEventListener("click", event => {
-      modalbg.style.display = "none";
-    })
+    this.modalbg.style.display = "none";
+    document.querySelector('.modal-contact').setAttribute("aria-hidden","true");
+    document.querySelector('.photographe-main').setAttribute("aria-hidden","false");
+    document.querySelector('.header').setAttribute("aria-hidden","false");
   }
-  
+
   //control & validation Modal
 
   //DOM Elements.
-  firstNameElt  = document.getElementById("first-name");
-  lastNameElt   = document.getElementById("last-name");
-  emailElt      = document.getElementById("email")
+  firstNameElt = document.getElementById("first-name");
+  lastNameElt = document.getElementById("last-name");
+  emailElt = document.getElementById("email");
+  msglElt = document.getElementById("msg");
+  
 
   controleForm() {
     this.firstNameElt.addEventListener("input", event => {
@@ -50,24 +55,21 @@ export default class Modal {
   }
 
   validatePrenom(prenomElt) {
-      let prenom = prenomElt.value;
-      //RegExp :ecrire une chaine avec au moins 3 lettres maj ou bien min.
-      let regexNomPrenom = new RegExp("^[a-zA-Z]{2,}$");
-      let msgErreurPrenom = document.getElementById("first_error");
-      // le message d'erreur doit etre vide à chaque validation à chaque click sur le boutton C'est parti.
-      msgErreurPrenom.textContent = "";
-      // annuler le border.
-      prenomElt.dataset.errorVisible = "false";
+    let prenom = prenomElt.value;
+    let regexNomPrenom = new RegExp("^[a-zA-Z]{2,}$");
+    let msgErreurPrenom = document.getElementById("first_error");
+    // le message d'erreur doit etre vide à chaque validation à chaque click sur le boutton C'est parti.
+    msgErreurPrenom.textContent = "";
+    // annuler le border.
+    prenomElt.dataset.errorVisible = "false";
 
-      if (regexNomPrenom.test(prenom) === false) {
-        msgErreurPrenom.textContent = "Saisissez un prénom qui contient au moins deux caractères alphabétiques";
-        prenomElt.dataset.errorVisible = "true";
-        return false;
-      }
-      return true;
+    if (regexNomPrenom.test(prenom) === false) {
+      msgErreurPrenom.textContent = "Saisissez un prénom qui contient au moins deux caractères alphabétiques";
+      prenomElt.dataset.errorVisible = "true";
+      return false;
+    }
+    return true;
   }
-
-  
 
   validateEmail(emailElt) {
     let email = emailElt.value;

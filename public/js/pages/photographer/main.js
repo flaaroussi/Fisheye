@@ -9,9 +9,12 @@ fisheyeApi.fetchData()
 .then(data => {
    const photographerPage = new PhotographerPage();
    // affcihage du profile
-   photographerPage.displayProfil(data.photographers);  
+   photographerPage.displayProfil(data.photographers);
+   
+   //attache event change au combo de tri.
+   photographerPage.initTri(data.media);
    // affichage des média d'u photographer
-   photographerPage.displayMedia(data.media);     
+   photographerPage.triMedia(data.media, 'popularite');     
 })
 
 

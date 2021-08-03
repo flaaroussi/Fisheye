@@ -1,7 +1,26 @@
 .photographer-infos{
+   display: flex;
+   .modal-btn{
+      margin-left: 2rem;
+   }
    *{
       line-height: 1.5rem;
       
    }
    
+}
+
+.media-tri{
+   margin-bottom: 2rem;
+   select{
+      height:2.5rem;
+      width:10rem;
+      color:$color-white;
+      border: 1px solid $color1;
+      background-color: $color1;
+      border-radius: 4px;
+      margin-left: 2rem;
+      padding-left: 0.5rem;
+      padding-right: 1rem;
+   }
 }

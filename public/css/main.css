@@ -87,7 +87,6 @@ a {
 .photographer-card h2 {
   color: #D3573C;
   font-size: 2rem;
-  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 .photographer-card .localisation {
@@ -103,6 +102,10 @@ a {
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
+}
+
+.h2-homepage {
+  margin-top: 2rem;
 }
 
 .menu {
@@ -191,6 +194,10 @@ input {
   padding-right: 10px;
 }
 
+.formData {
+  margin-bottom: 0.6rem;
+}
+
 textarea {
   resize: none;
   overflow: hidden;
@@ -248,8 +255,6 @@ textarea {
   color: #FF0000;
   font-size: 14px;
   background-color: yellow;
-  border: 1px solid red;
-  padding: 1rem;
 }
 
 .header {
@@ -329,8 +334,29 @@ textarea {
   color: black;
 }
 
+.photographer-infos {
+  display: flex;
+}
+.photographer-infos .modal-btn {
+  margin-left: 2rem;
+}
 .photographer-infos * {
   line-height: 1.5rem;
+}
+
+.media-tri {
+  margin-bottom: 2rem;
+}
+.media-tri select {
+  height: 2.5rem;
+  width: 10rem;
+  color: #FFFFFF;
+  border: 1px solid #901C1C;
+  background-color: #901C1C;
+  border-radius: 4px;
+  margin-left: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */
