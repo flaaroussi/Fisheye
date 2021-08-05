@@ -6,3 +6,9 @@ $color-tag:#C4C4C4;
 $color-white:#FFFFFF;
 $color-error:#FF0000;
 $btn-border-radius:4px;
+
+/** Breakpoints Responsive design: tablette et desktop*/
+$breakpoints:(
+   smartphone:650px,
+   desktop: 1000px
+);

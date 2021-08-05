@@ -24,6 +24,10 @@ export default class PhotographerPage {
       
       //ajout name du photographe dans le modal.
       document.getElementById("modal_photographer_name").textContent = photographeSelectionne[0].name;
+      //ajout prix dans le footer.
+      document.querySelector(".photographer-footer-price").textContent = `${photographeSelectionne[0].price} € / jour`;
+      
+
       // initialize le modal
       const modal = new Modal()
       modal.initModal();
@@ -39,7 +43,7 @@ export default class PhotographerPage {
                   <h2>${x.name}</h2>
                   <p class="localisation">${x.city}</p>
                   <p class="tagline">${x.tagline}</p>
-                  <ul class="filtres">
+                  <ul class="filtres filtres__direction">
                      ${x.tags.map(tag => `<li><a class="tag">#${tag}</a></li>`).join(" ")}
                   </ul>  
                </div>   
@@ -146,6 +150,9 @@ export default class PhotographerPage {
       })
       //l'ajout d'un like lorsqu'on click sur le coeur.
       this.addLikes();
+      //appel fonction total general likes aprés chargement des medias.
+      this.calculTotalLikes();
+
    }
 
    //Création element Image
@@ -196,8 +203,6 @@ export default class PhotographerPage {
 
       totalLikes.forEach(currentElt => {
          currentElt.addEventListener("click", event => {
-
-
             let eltNbreLike = currentElt.querySelector("span");
             //eltNbreLike[1].textContent :je selectionne le deuxieme child./ 
             let currentTotalLike = parseInt(eltNbreLike.textContent);
@@ -218,14 +223,30 @@ export default class PhotographerPage {
                currentTotalLike--;
                currentElt.setAttribute("title", "J'aime");
                iconeCoeur.classList.value = "far fa-heart";
-
             }
-
             eltNbreLike.textContent = currentTotalLike;
-
+            //appel de la fonction total likes pour +/- le
+            this.calculTotalLikes();
          })
       })
    }
+
+   //Fonction qui calcul Total global des likes.
+   
+   calculTotalLikes(){
+      //je dois pointer sur le span de chaque media.
+      console.log('debut de calcul');
+      let mediaLikesElts = document.querySelectorAll(".totalLikes span");
+      let totalLikes = 0;
+      //Récuperer les likes de chaque media.
+      mediaLikesElts.forEach(currentSpan =>{
+         //Cumuler les likes.
+         totalLikes  = totalLikes + parseInt(currentSpan.textContent);
+      })
+         //afficher le resultat. 
+         document.querySelector(".photographer-footer-likes").textContent = totalLikes;
+   }
+
 }
 
 

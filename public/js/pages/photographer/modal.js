@@ -21,49 +21,62 @@ export default class Modal {
 
   openModal() {
     this.modalbg.style.display = "block";
-    document.querySelector('.modal-contact').setAttribute("aria-hidden","false");
+    console.log(document.querySelector('.bground'));
+    document.querySelector('.bground').setAttribute("aria-hidden","false");
     document.querySelector('.photographe-main').setAttribute("aria-hidden","true");
     document.querySelector('.header').setAttribute("aria-hidden","true");
   }
 
   doCloseModal() {
     this.modalbg.style.display = "none";
-    document.querySelector('.modal-contact').setAttribute("aria-hidden","true");
+    document.querySelector('.bground').setAttribute("aria-hidden","true");
     document.querySelector('.photographe-main').setAttribute("aria-hidden","false");
     document.querySelector('.header').setAttribute("aria-hidden","false");
   }
 
   //control & validation Modal
 
-  //DOM Elements.
+  //DOM Elements.(on pointe sur les elts de la DOM)
   firstNameElt = document.getElementById("first-name");
   lastNameElt = document.getElementById("last-name");
   emailElt = document.getElementById("email");
-  msglElt = document.getElementById("msg");
+  msgElt = document.getElementById("message");
+  formElt = document.querySelector(".form")
+
   
 
   controleForm() {
+    //event input est simulaire a event keyup.
     this.firstNameElt.addEventListener("input", event => {
       this.validatePrenom(this.firstNameElt);
     })
     this.lastNameElt.addEventListener("input", event => {
-      this.validatePrenom(this.lastNameElt);
+      this.validateNom(this.lastNameElt);
     })
     this.emailElt.addEventListener("input", event => {
       this.validateEmail(this.emailElt);
     })
+    this.msgElt.addEventListener("input", event => {
+      this.validateMsg(this.msgElt);
+    })
+    this.formElt.addEventListener("submit", event =>{
+      // empêcher l'envoi par défaut du formulaire lors du clique sur envoyer
+      event.preventDefault();
+      this.validate(this.formElt);
+    })   
+    
   }
 
   validatePrenom(prenomElt) {
     let prenom = prenomElt.value;
-    let regexNomPrenom = new RegExp("^[a-zA-Z]{2,}$");
+    let regexPrenom = new RegExp("^[a-zA-Z]{2,}$");
     let msgErreurPrenom = document.getElementById("first_error");
     // le message d'erreur doit etre vide à chaque validation à chaque click sur le boutton C'est parti.
     msgErreurPrenom.textContent = "";
     // annuler le border.
     prenomElt.dataset.errorVisible = "false";
 
-    if (regexNomPrenom.test(prenom) === false) {
+    if (regexPrenom.test(prenom) === false) {
       msgErreurPrenom.textContent = "Saisissez un prénom qui contient au moins deux caractères alphabétiques";
       prenomElt.dataset.errorVisible = "true";
       return false;
@@ -71,13 +84,27 @@ export default class Modal {
     return true;
   }
 
+  validateNom(nomElt) {
+    let nom = nomElt.value;
+    let regexNom = new RegExp("^[a-zA-Z]{2,}$");
+    let msgErreurNom = document.getElementById("last_error");
+    msgErreurNom.textContent = "";
+    nomElt.dataset.errorVisible = "false";
+
+    if (regexNom.test(nom) === false) {
+      msgErreurNom.textContent = "Saisissez un prénom qui contient au moins deux caractères alphabétiques";
+      nomElt.dataset.errorVisible = "true";
+      return false;
+    }
+    return true;
+  }
+  
   validateEmail(emailElt) {
     let email = emailElt.value;
     let msgErrorEmail = document.getElementById("email_error");
     let regexEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     msgErrorEmail.textContent = "";
     emailElt.dataset.errorVisible = "false";
-
     if (regexEmail.test(email) === false) {
       msgErrorEmail.textContent = "Saisissez une adresse électronique valide";
       emailElt.dataset.errorVisible = "true";
@@ -86,19 +113,39 @@ export default class Modal {
     return true;
   }
 
-  validateMessage(msglElt) {
+  validateMsg(msgElt) {
+    console.log(msgElt.value);
     let msg = msgElt.value;
     let msgErrorMsg = document.getElementById("msg_error");
     msgErrorMsg.textContent = "";
     msgElt.dataset.errorVisible = "false";
-
-    if (typeof msg !== 'string') {
-      msgErrorMsg.textContent = "Saisissez une chaine de caractères";
-      msglElt.dataset.errorVisible = "true";
+    if (msg.length <= 0) {
+      msgErrorMsg.textContent = "Saisissez un message";
+      msgElt.dataset.errorVisible = "true";
       return false;
     }
     return true;
   }
+
+  validate(formContact) {
+    let isValidatePrenom = this.validatePrenom(formContact.nom);
+    let isValidateNom = this.validateNom(formContact.prenom);
+    let isValidateEmail = this.validateEmail(formContact.email);
+    let isValidateMsg = this.validateMsg(formContact.message);
+
+    if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg) {
+      
+      this.doCloseModal();              // fonction qui permet de fermer le formulaire.
+      alert("Merci! Votre message a été envoyé.");
+      return false;                   //si return false le formulaire ne sera pas envoyé.
+    } else {  
+      return false;
+    }
+  
+
+  }
+
+
 
 }
 

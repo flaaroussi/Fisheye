@@ -2,5 +2,13 @@
   margin-top: 20px;
   margin-bottom: 40px;
    @include flex (row, space-between, center);
+
+  nav{
+    @include responsive(smartphone){
+      background-color: blue;
+      align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
+    }
+  }
+ 
    
 }

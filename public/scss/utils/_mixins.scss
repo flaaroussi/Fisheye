@@ -13,3 +13,11 @@
       align-items: $align-items;
    }
 }
+
+@mixin responsive($devise : smartphone) {
+   // récupération de la taille de devise
+   $devise-width : map-get($breakpoints, $devise);
+   @media screen and (max-width: $devise-width){
+      @content;
+   }
+}  

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/** Breakpoints Responsive design: tablette et desktop*/
 @import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap);
 html {
   font-size: 100%;
@@ -52,12 +53,17 @@ a {
 .filtres li:last-child {
   margin-right: 0;
 }
+.filtres__direction {
+  justify-content: left;
+}
 
 .btn {
   color: #FFFFFF;
   background-color: #901C1C;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border: none;
 }
 
@@ -267,15 +273,27 @@ textarea {
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (max-width: 650px) {
+  .header nav {
+    background-color: blue;
+    align-self: flex-end;
+    /* Seul ce bloc sera aligné à la fin */
+  }
+}
 
 .dashboard-photographers {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 3rem;
   margin-bottom: 3rem;
 }
 .dashboard-photographers article {
   text-align: center;
+}
+@media screen and (max-width: 650px) {
+  .dashboard-photographers {
+    grid-template-columns: 1fr;
+  }
 }
 
 .photographer-profil {
@@ -288,9 +306,9 @@ textarea {
 
 .photographer-media {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .media-card {
@@ -323,6 +341,26 @@ textarea {
 .media-card .media-footer .fa-heart,
 .media-card .media-footer span {
   cursor: pointer;
+}
+
+.photographer-footer {
+  padding: 0.8rem;
+  position: fixed;
+  bottom: 0;
+  right: 10%;
+  background-color: #D3573C;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-weight: bold;
+}
+.photographer-footer section {
+  width: 15rem;
+  display: flex;
+  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+  flex-direction: row;
+  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .access-main {

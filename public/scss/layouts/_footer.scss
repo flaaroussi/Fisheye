@@ -1,0 +1,14 @@
+.photographer-footer{
+   padding: 0.8rem;
+   position: fixed;
+   bottom:0;
+   right: 10%;
+   background-color:$color2;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   font-weight: bold;
+   section{
+      width: 15rem;
+      @include flex (row, space-between, center);
+   }
+}

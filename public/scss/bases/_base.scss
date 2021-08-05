@@ -42,4 +42,7 @@ a{
    li:last-child{
       margin-right: 0;
    }
+   &__direction{
+      justify-content: left;
+   }
 }

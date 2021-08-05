@@ -2,12 +2,15 @@
 //style page index.
 .dashboard-photographers{
    display: grid;
-   grid-template-columns: auto auto auto;
+   grid-template-columns: 1fr 1fr 1fr;
    //space between column gap and row gap.
    grid-gap: 3rem;
    margin-bottom: 3rem;
    article{
       text-align: center;
+   }
+   @include responsive(smartphone){
+      grid-template-columns: 1fr;
    }
  }
 
@@ -24,9 +27,9 @@
 //section media
 .photographer-media{
    display: grid;
-   grid-template-columns: auto auto auto;
+   grid-template-columns: 1fr 1fr 1fr;
    grid-gap: 3rem;
-   margin-bottom: 3rem;
+   margin-bottom: 4rem;
  }
 
 .media-card{

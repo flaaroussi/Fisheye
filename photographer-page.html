@@ -48,52 +48,72 @@
       </section>
 
    </main>
+   <footer class="photographer-footer" aria-label="Photographe infos supplémentaire">
+      <section> 
+         <aside >
+            <!--Total likes-->
+            <span class="photographer-footer-likes">0</span>
+            <i class="fas fa-heart"></i>
+         </aside>
+         <span class="photographer-footer-price">0</span>
+      </section>
+
+
+   </footer>
+
    
 
    <!--Modal-->
   
-      <div class="bground" class="modal-contact" aria-hidden="true" role="dialog" aria-describedby="modalContact">
-         <div class="content">
-            <!--Fermeture du modal-->
-            <span class="close"></span>
-            <div >
-               <!--Titre du modal-->
-               <h2 class="titre_modal">Contacter-moi</h2>
-               <h3 class="titre_modal" id="modal_photographer_name"></h3>
-               <!--Formulaire à remplir-->
-               <form class="form" name="formulaire" action="#" aria-labelledby="modalContact" method="get" onsubmit="return validate();">
-                  <div class="formData">
-                     <label class="" for="first-name">Prénom</label><br>
-                     <input class="text-control" type="text" id="first-name" name="first" minlength="2" data-error-visible=""/><br>
-                     <span class="error" id="first_error"></span>
-                  </div>
+   <div class="bground" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+      <div class="content">
+         <!--Fermeture du modal-->
+         <span class="close"></span>
+         <div >
+            <!--Titre du modal-->
+            <h2 class="titre_modal">Contacter-moi</h2>
+            <h3 class="titre_modal" id="modal_photographer_name"></h3>
+            <!--Formulaire à remplir-->
+            <form class="form" name="formulaire" action="#" aria-labelledby="modalContact" method="get" >
+               <div class="formData">
+                  <label class="" for="first-name">Prénom</label><br>
+                  <input class="text-control" type="text" id="first-name" name="prenom" minlength="2" data-error-visible=""/><br>
+                  <span class="error" id="first_error"></span>
+               </div>
 
-                  <div class="formData">
-                     <label class="" for="last-name">Nom</label><br>
-                     <input class="text-control" type="text" id="last-name" name="last" data-error-visible="" /><br>
-                     <span class="error" id="last_error"></span>
-                  </div>
+               <div class="formData">
+                  <label class="" for="last-name">Nom</label><br>
+                  <input class="text-control" type="text" id="last-name" name="nom" data-error-visible="" /><br>
+                  <span class="error" id="last_error"></span>
+               </div>
 
-                  <div class="formData">
-                     <label class="email" for="">Email</label><br>
-                     <input class="text-control" type="email" id="email" name="email" placeholder="nomutilisateur@example.com" minlength="3" maxlength="64" data-error-visible=""/><br>
-                     <span class="error" id="email_error"></span>
-                  </div>
+               <div class="formData">
+                  <label class="email" for="">Email</label><br>
+                  <input class="text-control" type="email" id="email" name="email" placeholder="nomutilisateur@example.com" minlength="3" maxlength="64" data-error-visible=""/><br>
+                  <span class="error" id="email_error"></span>
+               </div>
 
-                  <div class="formData">
-                     <label class="" for="message" >Votre message</label><br>
-                     <textarea  id="message" name="your message" rows="4" cols="5" data-error-visible="">Vous pouvez écrire içi.</textarea><br>
-                     <span class="error" id="msg_error"></span>
-                  </div>
-                  <button class="btn btn_envoyer">Envoyer</button>
+               <div class="formData">
+                  <label class="" for="message" >Votre message</label><br>
+                  <textarea  id="message" name="message" rows="4" cols="5" data-error-visible="">Vous pouvez écrire içi.</textarea><br>
+                  <span class="error" id="msg_error"></span>
+               </div>
+               <button class="btn btn_envoyer" >Envoyer</button>
 
-               </form>
-            </div>
+            </form>
          </div>
       </div>
+   </div>
 
-
-
+   <!-- Caroussel  -->
+   <div>
+      <ul class="carrousel" aria-label="selection-media" >
+         <li class="carrousel-item"></li>
+         <li class="carrousel-item"></li>
+         <li class="carrousel-item"></li>
+      </ul>
+   </div>
+   
 
    <script type="module" src="public/js/pages/photographer/main.js"></script>
    
