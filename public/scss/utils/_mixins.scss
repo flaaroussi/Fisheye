@@ -21,3 +21,10 @@
       @content;
    }
 }  
+
+@mixin hidden {
+   @include responsive(smartphone){
+      position: absolute;
+      top:-1000px
+   }
+}

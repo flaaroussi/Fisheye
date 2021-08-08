@@ -1,11 +1,18 @@
 .photographer-infos{
    display: flex;
+
    .modal-btn{
       margin-left: 2rem;
+      width: 8rem;
+      @include responsive(smartphone){
+         position:fixed;
+         bottom: 10px;
+         left:calc(50% - 4rem);
+         margin-left: 0;
+      }
    }
    *{
       line-height: 1.5rem;
-      
    }
    
 }
@@ -23,4 +30,6 @@
       padding-left: 0.5rem;
       padding-right: 1rem;
    }
+    //responsive design page photographe
+    @include hidden;
 }

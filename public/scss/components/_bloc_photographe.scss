@@ -20,8 +20,9 @@
    &__direction{
       @include flex (row, space-between, center);
    }
-   
+ 
 }
+
 .h2-homepage{
    margin-top: 2rem;
 }

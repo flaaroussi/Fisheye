@@ -21,7 +21,6 @@ export default class Modal {
 
   openModal() {
     this.modalbg.style.display = "block";
-    console.log(document.querySelector('.bground'));
     document.querySelector('.bground').setAttribute("aria-hidden","false");
     document.querySelector('.photographe-main').setAttribute("aria-hidden","true");
     document.querySelector('.header').setAttribute("aria-hidden","true");
@@ -43,8 +42,6 @@ export default class Modal {
   msgElt = document.getElementById("message");
   formElt = document.querySelector(".form")
 
-  
-
   controleForm() {
     //event input est simulaire a event keyup.
     this.firstNameElt.addEventListener("input", event => {
@@ -64,7 +61,6 @@ export default class Modal {
       event.preventDefault();
       this.validate(this.formElt);
     })   
-    
   }
 
   validatePrenom(prenomElt) {
@@ -132,21 +128,14 @@ export default class Modal {
     let isValidateNom = this.validateNom(formContact.prenom);
     let isValidateEmail = this.validateEmail(formContact.email);
     let isValidateMsg = this.validateMsg(formContact.message);
-
     if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg) {
-      
       this.doCloseModal();              // fonction qui permet de fermer le formulaire.
       alert("Merci! Votre message a été envoyé.");
       return false;                   //si return false le formulaire ne sera pas envoyé.
     } else {  
       return false;
     }
-  
-
   }
-
-
-
 }
 
 

@@ -1,10 +1,16 @@
 .access-main{
    background-color: $color2;
+   width: 8rem;
    position: fixed;
    top:4px;
-   left:50%;
+   left:calc(50% - 4rem);
    display: none; 
    color:black;
+   font-weight: bold;
+   border-radius: 4px;
+   padding: 0.2rem;
+   padding-left: 0.5rem;
+   padding-right: 0.5rem;
    //La valeur auto de la propriété margin donne aux marges gauche et droite 
    //l'espace restant disponible dans la page. 
    //Il faut bien se rappeler de donner une propriété width à votre div.
