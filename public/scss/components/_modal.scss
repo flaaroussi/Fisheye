@@ -13,7 +13,7 @@ background:rgba(0,0,0,0.4);
 .content {
    margin: 5% auto;
    width: 100%;
-   max-width: 500px;
+   max-width: 600px;
    background: $color2;
    overflow: hidden;
    position: relative;
@@ -83,13 +83,16 @@ background:rgba(0,0,0,0.4);
    height: 33px;
    width: 3px;
    background-color: #fff;
+    
  }
- .close:before {
+
+  .close:before {
    transform: rotate(45deg);
  }
  .close:after {
    transform: rotate(-45deg);
  }
+
  .btn_envoyer{
     padding-right: 2rem;
     padding-left: 2rem;

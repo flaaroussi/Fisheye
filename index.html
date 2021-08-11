@@ -11,28 +11,32 @@
 </head>
 
 <body id="page_body">
+   <!--En tête de la page principale-->
    <header class="header" role="banner">     
-      <!--Logo FicheEye-->
       <figure>
          <img src="public/images/logo/logo.png" alt="Fisheye Home page">
       </figure>
-      <!--menu de navigation-->
-      <nav aria-label="photographer categories" role="navigation" class="header-nav">
+      <nav class="header nav-header" aria-label="photographer categories" role="navigation" class="header-nav">
          <ul class="filtres" id="header__filtres">
             <!--data-filtre:premet de stocker-->
-            <li><a data-filtre="portrait" href="#" class="tag">#Portrait</a></li>
-            <li><a data-filtre="art" href="#" class="tag">#Art</a></li>
-            <li><a data-filtre="fashion" href="#" class="tag">#Fashion</a></li>
-            <li><a data-filtre="architecture" href="#" class="tag">#Architecture</a></li>
-            <li><a data-filtre="travel" href="#" class="tag">#Travel</a></li>
-            <li><a data-filtre="sport" href="#" class="tag">#Sport</a></li>
-            <li><a data-filtre="animals" href="#" class="tag">#Animals</a></li>
-            <li><a data-filtre="events" href="#" class="tag">#Events</a></li>
+            <div>
+               <li><a data-filtre="portrait" href="#" class="tag">#Portrait</a></li>
+               <li><a data-filtre="art" href="#" class="tag">#Art</a></li>
+               <li><a data-filtre="fashion" href="#" class="tag">#Fashion</a></li>
+               <li><a data-filtre="architecture" href="#" class="tag">#Architecture</a></li>
+            </div>
+            <div>
+               <li><a data-filtre="travel" href="#" class="tag">#Travel</a></li>
+               <li><a data-filtre="sport" href="#" class="tag">#Sport</a></li>
+               <li><a data-filtre="animals" href="#" class="tag">#Animals</a></li>
+               <li><a data-filtre="events" href="#" class="tag">#Events</a></li>
+            </div>
          </ul>
       </nav>
-      <!--Titre-->
       <h1>Nos photographes</h1>
    </header>
+
+   <!--Corps page principale-->
    <main id="main_home">
       <a id="access_main" class="access-main" aria-label="Passer au contenu" href="#page_body">Passer au contenu</a>
       <section id="dashboard_photographers" class="dashboard-photographers"></section>

@@ -87,38 +87,6 @@ a {
   border: 1px solid #901C1C;
 }
 
-.photographer-card {
-  width: 100%;
-}
-.photographer-card img {
-  border-radius: 50%;
-  width: 10rem;
-  height: 10rem;
-}
-.photographer-card h2 {
-  color: #D3573C;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.photographer-card .localisation {
-  color: #901C1C;
-}
-.photographer-card .price {
-  color: #C4C4C4;
-}
-.photographer-card__direction {
-  display: flex;
-  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-  flex-direction: row;
-  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  justify-content: space-between;
-  align-items: center;
-}
-
-.h2-homepage {
-  margin-top: 2rem;
-}
-
 .menu {
   border: 1px solid yellow;
   color: #FFFFFF;
@@ -169,7 +137,7 @@ a {
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   background: #D3573C;
   overflow: hidden;
   position: relative;
@@ -268,6 +236,51 @@ textarea {
   background-color: yellow;
 }
 
+.ligthbox-modal {
+  border: 1px solid red;
+  background: #ffffff;
+}
+.ligthbox-modal .content {
+  max-width: 800px;
+  height: 550px;
+}
+
+.close-caroussel:after,
+.close-caroussel:before {
+  background-color: #901C1C;
+}
+
+.caroussel {
+  position: relative;
+}
+
+.caroussel__container {
+  transition: transform 0.3s;
+  transform: translate3d(0, 0, 0);
+}
+
+.caroussel__next:hover,
+.caroussel__prev:hover {
+  transform: scale(1.2);
+}
+
+.caroussel__next,
+.caroussel__prev {
+  font-size: 2rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.caroussel-body {
+  display: flex;
+  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+  flex-direction: row;
+  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
 .header {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -277,13 +290,36 @@ textarea {
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
+  /* nav{
+    //@include responsive(smartphone){
+      align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
+}
+.headerheader-nav {
+  display: flex;
+  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+  flex-direction: row;
+  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  justify-content: space-between;
+  align-items: center;
 }
 @media screen and (max-width: 650px) {
-  .header nav {
-    align-self: flex-end;
-    /* Seul ce bloc sera aligné à la fin */
-    margin-top: 8rem;
-    flex-wrap: wrap;
+  .header {
+    display: flex;
+    /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+    flex-direction: column;
+    /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  }
+  .header img {
+    width: 60%;
+    height: 100%;
+  }
+  .header h1 {
+    height: 100px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    position: absolute;
+    top: 0;
+    right: 3%;
   }
 }
 
@@ -398,6 +434,38 @@ textarea {
   padding: 0.2rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.photographer-card {
+  width: 100%;
+}
+.photographer-card img {
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+}
+.photographer-card h2 {
+  color: #D3573C;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.photographer-card .localisation {
+  color: #901C1C;
+}
+.photographer-card .price {
+  color: #C4C4C4;
+}
+.photographer-card__direction {
+  display: flex;
+  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+  flex-direction: row;
+  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h2-homepage {
+  margin-top: 2rem;
 }
 
 .photographer-infos {

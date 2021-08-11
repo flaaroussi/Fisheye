@@ -1,0 +1,41 @@
+
+
+.ligthbox-modal{
+   border:1px solid red;
+   background:#ffffff;
+   .content {
+      max-width: 800px;
+      height: 550px;
+   }
+}
+
+
+.close-caroussel:after,
+.close-caroussel:before{
+ background-color:$color1;
+}
+.caroussel{
+   //parceque on va faire bouger le caroussel__container % au caroussel
+   position: relative;
+}
+.caroussel__container{
+   transition: transform 0.3s;
+   transform: translate3d(0, 0, 0)
+}
+
+.caroussel__next:hover, 
+.caroussel__prev:hover{
+   transform: scale(1.2) ;
+}
+
+.caroussel__next, 
+.caroussel__prev{
+   font-size: 2rem;
+   padding-left: 0.4rem;
+   padding-right: 0.4rem;
+}
+
+.caroussel-body{
+   @include flex (row, space-between, center);
+   height: 100%;
+}

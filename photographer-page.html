@@ -10,8 +10,6 @@
    <title>FishEye</title>
 </head>
 
-<body>
-
    <header class="header" role="banner" aria-hidden="false">
       <a href="index.html">
          <figure>
@@ -59,11 +57,8 @@
 
    </footer>
 
-   
-
-   <!--Modal-->
-  
-   <div class="bground" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+      <!--Modal-->
+   <div class="bground modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
       <div class="content">
          <!--Fermeture du modal-->
          <span class="close"></span>
@@ -78,39 +73,44 @@
                   <input class="text-control" type="text" id="first-name" name="prenom" minlength="2" data-error-visible=""/><br>
                   <span class="error" id="first_error"></span>
                </div>
-
                <div class="formData">
                   <label class="" for="last-name">Nom</label><br>
                   <input class="text-control" type="text" id="last-name" name="nom" data-error-visible="" /><br>
                   <span class="error" id="last_error"></span>
                </div>
-
                <div class="formData">
                   <label class="email" for="">Email</label><br>
                   <input class="text-control" type="email" id="email" name="email" placeholder="nomutilisateur@example.com" minlength="3" maxlength="64" data-error-visible=""/><br>
                   <span class="error" id="email_error"></span>
                </div>
-
                <div class="formData">
                   <label class="" for="message" >Votre message</label><br>
                   <textarea  id="message" name="message" rows="4" cols="5" data-error-visible="">Vous pouvez écrire içi.</textarea><br>
                   <span class="error" id="msg_error"></span>
                </div>
                <button class="btn btn_envoyer" >Envoyer</button>
-
             </form>
          </div>
       </div>
    </div>
 
    <!-- Caroussel  -->
-   <div>
-      <ul class="carrousel" aria-label="selection-media" >
-         <li class="carrousel-item"></li>
-         <li class="carrousel-item"></li>
-         <li class="carrousel-item"></li>
-      </ul>
+   <div class="bground ligthbox-modal" aria-hidden="true" role="dialog" aria-describedby="modalcaroussel">
+      <div class="content content-caroussel">
+         <span class="close close-caroussel"></span>
+         <div class="caroussel-body">
+            <i class="fas fa-chevron-left caroussel__prev" ></i>
+            <div id="caroussel_photographer_media">
+               <img src="" alt="je suis une image" class="caroussel-img"/>
+            </div>
+            <h2 id="caroussel_photographer_titre"></h2>
+            <i class="fas fa-chevron-right caroussel__next"></i>
+         </div>
+      <div>
    </div>
+            
+   
+
    
 
    <script type="module" src="public/js/pages/photographer/main.js"></script>

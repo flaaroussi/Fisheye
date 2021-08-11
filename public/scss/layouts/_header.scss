@@ -2,13 +2,35 @@
   margin-top: 20px;
   margin-bottom: 40px;
    @include flex (row, space-between, center);
-
-  nav{
-    @include responsive(smartphone){
-      align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
-      margin-top: 8rem;
-      flex-wrap: wrap;
-      
-    }
-  }
+   &header-nav{
+    @include flex (row, space-between, center);
    }
+   @include responsive(smartphone){
+      @include flex (column, 0, 0);
+        img{
+          width: 60%;
+          height: 100%;
+        }
+        h1{
+          height: 100px !important;
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+            position: absolute;
+            top: 0;
+            right:3%;
+        }
+    
+    }
+  
+  
+  /* nav{
+    //@include responsive(smartphone){
+      align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
+      //margin-top: 8rem;
+      //flex-wrap: wrap;}
+      
+   
+    
+    
+   
+}

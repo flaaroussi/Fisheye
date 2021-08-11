@@ -1,22 +1,41 @@
 
-
+//
 export default class Modal {
 
-  modalBtn = document.querySelector(".modal-btn");
-  modalbg = document.querySelector(".bground");
-  modalClose = document.querySelector(".close");
+  modalBtn = null;
+  modalbg = null;
+  modalClose = null;
+
+  constructor(isModal){
+    // carrousel
+      if(isModal == '0'){
+        this.modalbg = document.querySelector(".ligthbox-modal");
+        this.modalClose = document.querySelector(".ligthbox-modal .close");
+        this.initCarousselModal();
+        this.openModal();
+      }else{
+        this.modalBtn = document.querySelector(".modal-btn");
+        this.modalbg = document.querySelector(".modal");
+        this.modalClose = document.querySelector(".modal .close");
+        this.initModal();
+      }
+  }
 
   initModal() {
-
     this.modalBtn.addEventListener("click", event => {
       this.openModal();
     });
-
     this.modalClose.addEventListener("click", event => {
       this.doCloseModal();
     })
     //Initialisation des controles.
       this.controleForm();
+  }
+
+  initCarousselModal(){
+    this.modalClose.addEventListener("click", event => {
+      this.doCloseModal();
+    })
   }
 
   openModal() {
@@ -33,8 +52,7 @@ export default class Modal {
     document.querySelector('.header').setAttribute("aria-hidden","false");
   }
 
-  //control & validation Modal
-
+  //control & validation Modal.
   //DOM Elements.(on pointe sur les elts de la DOM)
   firstNameElt = document.getElementById("first-name");
   lastNameElt = document.getElementById("last-name");
