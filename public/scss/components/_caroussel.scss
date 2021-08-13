@@ -1,18 +1,42 @@
 
 
 .ligthbox-modal{
-   border:1px solid red;
-   background:#ffffff;
+   background:$color-white;
    .content {
-      max-width: 800px;
+      background-color: $color-white;
+      max-width: 60%;
       height: 550px;
    }
+   .caroussel-body{
+      border: 1px solid red;
+      @include flex (row, space-between, center);
+      height: 100%;
+      .media{
+         width:86%;
+         border: 1px solid red;
+      }
+      img,
+      video{
+         width: 100%;
+         height: 30rem;
+         object-fit: cover;
+         border-radius: 4px;
+      }
+      
+   }
+   .titre{
+      margin-left: 7%;
+   }
+   
 }
 
 
 .close-caroussel:after,
 .close-caroussel:before{
  background-color:$color1;
+ cursor: pointer;
+ width: 5px;
+ 
 }
 .caroussel{
    //parceque on va faire bouger le caroussel__container % au caroussel
@@ -33,9 +57,7 @@
    font-size: 2rem;
    padding-left: 0.4rem;
    padding-right: 0.4rem;
+   color:$color1;
+   cursor: pointer;
 }
 
-.caroussel-body{
-   @include flex (row, space-between, center);
-   height: 100%;
-}

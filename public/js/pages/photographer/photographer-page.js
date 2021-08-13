@@ -165,10 +165,10 @@ export default class PhotographerPage {
       return template;
    }
 
-   //Création element Viodéo
+   //Création element Video
    getTemplateVideo(x) {
       let template = ` 
-                  <div class="media"><video  controls  poster=""><source src="./public/images/${x.photographerId}/${x.video}" /></video></div>
+                  <div class="media"><video  controls  poster ><source src="./public/images/${x.photographerId}/${x.video}" /></video></div>
                   <div class="media-footer">  
                      <h2>${x.title}</h2>
                      <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${x.likes}</span> <i class="far fa-heart"></i>

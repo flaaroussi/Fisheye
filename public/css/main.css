@@ -52,6 +52,11 @@ a {
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 650px) {
+  .filtres {
+    flex-wrap: wrap;
+  }
+}
 .filtres li {
   margin-right: 0.5rem;
 }
@@ -207,7 +212,7 @@ textarea {
   content: " ";
   height: 33px;
   width: 3px;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .close:before {
@@ -237,17 +242,43 @@ textarea {
 }
 
 .ligthbox-modal {
-  border: 1px solid red;
-  background: #ffffff;
+  background: #FFFFFF;
 }
 .ligthbox-modal .content {
-  max-width: 800px;
+  background-color: #FFFFFF;
+  max-width: 60%;
   height: 550px;
+}
+.ligthbox-modal .caroussel-body {
+  border: 1px solid red;
+  display: flex;
+  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
+  flex-direction: row;
+  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.ligthbox-modal .caroussel-body .media {
+  width: 86%;
+  border: 1px solid red;
+}
+.ligthbox-modal .caroussel-body img,
+.ligthbox-modal .caroussel-body video {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.ligthbox-modal .titre {
+  margin-left: 7%;
 }
 
 .close-caroussel:after,
 .close-caroussel:before {
   background-color: #901C1C;
+  cursor: pointer;
+  width: 5px;
 }
 
 .caroussel {
@@ -269,16 +300,8 @@ textarea {
   font-size: 2rem;
   padding-left: 0.4rem;
   padding-right: 0.4rem;
-}
-
-.caroussel-body {
-  display: flex;
-  /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-  flex-direction: row;
-  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+  color: #901C1C;
+  cursor: pointer;
 }
 
 .header {
@@ -303,14 +326,8 @@ textarea {
   align-items: center;
 }
 @media screen and (max-width: 650px) {
-  .header {
-    display: flex;
-    /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
-    flex-direction: column;
-    /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
-  }
   .header img {
-    width: 60%;
+    width: 50%;
     height: 100%;
   }
   .header h1 {

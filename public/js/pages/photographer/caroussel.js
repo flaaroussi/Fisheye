@@ -1,54 +1,111 @@
 import Modal from "./Modal.js";
 
-
 export default class Caroussel {
    carousselMedias = document.querySelectorAll(".media");
    lastIndexSelected = 0;
+   modal = null;
    /**
     * Constructeur de la class
     */
    constructor() {
       // liste de media d'un photoraphe
       this.carousselMedias.forEach((currentElement, currentIndex) => {
-         // attcher l'event clique sur chaque media pour l'afficher dans la carroussel 
+         // attacher l'event 'click' sur chaque media pour l'afficher dans la carroussel 
          currentElement.addEventListener("click", event => {
             // Ouvrir le caroussel         
-            const modal = new Modal(0);
-            //afficher le media sélectionné qui indexer par currentIndex
+            this.modal = new Modal(0);
+            //afficher le media sélectionné qui est indexé par currentIndex
             this.showMedia(currentIndex);
+
+            
             //Stocker l'index du media selectionné.
             this.lastIndexSelected = currentIndex;
          })
       });
+
       //Attach event 'click' sur le btn 'next' .
       let btnNext = document.querySelector(".caroussel__next");
       btnNext.addEventListener("click", event => {
-         if(this.lastIndexSelected >=0 && this.lastIndexSelected <this.carousselMedias.length){
-            this.lastIndexSelected++;
-            console.log(this.lastIndexSelected)
-            this.showMedia(this.lastIndexSelected);
-         }
+         this.showMediaNext();
       })
+
       //Attach event 'click' sur le btn preview.
       let btnPrev = document.querySelector(".caroussel__prev");
       btnPrev.addEventListener("click", event => {
-         if(this.lastIndexSelected >=0 ){
-            this.lastIndexSelected--;
-            console.log(this.lastIndexSelected)
-            this.showMedia(this.lastIndexSelected);
+         this.showMediaPrev();
+      })
+
+      //activer les touches de clavier.
+      document.addEventListener('keydown', event => {
+         console.log(event.key);
+         switch (event.key) {
+            case "ArrowRight":
+               this.showMediaNext();
+               break;
+            case "ArrowLeft":
+               this.showMediaPrev();
+               break;
+            case "Escape":
+               this.modal.doCloseModal();
+               break;
          }
       })
+      //fin de class caroussel
    }
 
-   showMedia(index) {
-      if(index >=0 && index<this.carousselMedias.length){
-      let mediaSelected = this.carousselMedias[index];
-      let currentImgSrc = mediaSelected.querySelector('img').getAttribute('src');
-      let carousselElt = document.querySelector('.caroussel-img');
-      carousselElt.setAttribute('src', currentImgSrc);
+   /**
+    * 
+    * @param {*}  
+    */
+   showMediaNext() {
+      if (this.lastIndexSelected >= 0 && this.lastIndexSelected < this.carousselMedias.length) {
+         this.lastIndexSelected++;
+         this.showMedia(this.lastIndexSelected);
+         
+      }
+   }
+   showMediaPrev() {
+      if (this.lastIndexSelected > 0) {
+         this.lastIndexSelected--;
+         this.showMedia(this.lastIndexSelected);
       }
    }
 
-   
+   /**
+    * 
+    * @param {*} index 
+    */
+   showMedia(index) {
+      if (index >= 0 && index < this.carousselMedias.length) {
+         let mediaSelected = this.carousselMedias[index];
+         let imgVideo = null;
+         if (mediaSelected.querySelector('img')) {
+            let currentImgSrc = mediaSelected.querySelector('img').getAttribute('src');
+            imgVideo = document.createElement('img');
+            imgVideo.src = currentImgSrc;
+         } else {
+            let currentImgSrc = mediaSelected.querySelector('video').querySelector('source').getAttribute('src');
+            imgVideo = document.createElement('video');
+            imgVideo.setAttribute('controls', "");
+            imgVideo.setAttribute('poster', "");
+            let sourceVideo = document.createElement('source');
+            sourceVideo.src = currentImgSrc;
+            imgVideo.appendChild(sourceVideo);
+         }
+         let cParent = document.getElementById('caroussel_photographer_media');
+         cParent.innerHTML = "";
+         cParent.appendChild(imgVideo);
+         //afficher le titre du media
+         let carousselTitreMedia = document.getElementById('caroussel_photographer_titre');
+         let currentTitreMedia = mediaSelected.querySelector('h2').textContent;
+
+         carousselTitreMedia.textContent = currentTitreMedia
+
+
+
+
+      }
+   }
 }
+
 
