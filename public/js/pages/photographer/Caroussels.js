@@ -1,4 +1,4 @@
-import Modal from "./Modal.js";
+import Modal from "./Modals.js";
 
 export default class Caroussel {
    carousselMedias = document.querySelectorAll(".media");
