@@ -1,6 +1,6 @@
 
 import FisheyeApi from "../../FisheyeApi.js";
-import PhotographerPage from "./photographer-page.js";
+import PhotographerPage from "./PhotographerPage.js";
 
 
 const fisheyeApi = new FisheyeApi();
