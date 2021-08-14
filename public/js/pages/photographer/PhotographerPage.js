@@ -2,8 +2,8 @@
 //recupere les données d'un photographe selon son id figurant dans l'url
 //on creer un element 'article'ou on fait apparaitre le photographe selectionné par la l'appele de 
 //la fonction getTemplatePhotographerProfil
-import Modal from "./Modals.js";
-import Caroussel from "./Caroussels.js";
+import Modal from "./Modal.js";
+import Caroussel from "./Caroussel.js";
 
 export default class PhotographerPage {
    constructor(data){
