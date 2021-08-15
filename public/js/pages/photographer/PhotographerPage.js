@@ -152,7 +152,7 @@ export default class PhotographerPage {
                   <figure class="media">
                      <img src="./public/images/${x.photographerId}/${x.image}" alt="${x.alt}"/>
                      <figcaption class="media-footer">
-                        <h2>${x.title} - ${x.date}</h2>
+                        <h2>${x.title}</h2>
 
                         <!--data-like pour savoir est ce que le coueur est deja liké --> 
                         <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">

@@ -243,35 +243,46 @@ textarea {
 
 .ligthbox-modal {
   background: #FFFFFF;
+  overflow: hidden;
 }
 .ligthbox-modal .content {
   background-color: #FFFFFF;
   max-width: 60%;
-  height: 550px;
+  height: 80%;
 }
 .ligthbox-modal .caroussel-body {
-  border: 1px solid red;
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
   flex-direction: row;
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  height: 80%;
 }
 .ligthbox-modal .caroussel-body .media {
-  width: 86%;
-  border: 1px solid red;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+  text-align: center;
 }
 .ligthbox-modal .caroussel-body img,
 .ligthbox-modal .caroussel-body video {
   width: 100%;
-  height: 30rem;
+  height: auto;
   object-fit: cover;
   border-radius: 4px;
 }
 .ligthbox-modal .titre {
-  margin-left: 7%;
+  margin-left: 5%;
+  color: #D3573C;
+  margin-top: 0.5rem;
+  line-height: 1.5rem;
+}
+
+.caroussel {
+  position: relative;
 }
 
 .close-caroussel:after,
@@ -279,10 +290,7 @@ textarea {
   background-color: #901C1C;
   cursor: pointer;
   width: 5px;
-}
-
-.caroussel {
-  position: relative;
+  left: 30px;
 }
 
 .caroussel__container {
@@ -385,7 +393,7 @@ textarea {
 .media-card img,
 .media-card video {
   width: 100%;
-  height: 22rem;
+  height: 18rem;
   object-fit: cover;
   border-radius: 4px;
 }

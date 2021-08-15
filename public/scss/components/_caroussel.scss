@@ -2,46 +2,55 @@
 
 .ligthbox-modal{
    background:$color-white;
+   overflow: hidden;
    .content {
       background-color: $color-white;
       max-width: 60%;
-      height: 550px;
+      height: 80%;
+      
    }
    .caroussel-body{
-      border: 1px solid red;
       @include flex (row, space-between, center);
-      height: 100%;
+      height: 80%;
       .media{
-         width:86%;
-         border: 1px solid red;
+         display: flex;
+         justify-items: center;
+         justify-content: center;
+         width:90%;
+         height: 100%;
+         text-align: center;
       }
       img,
       video{
          width: 100%;
-         height: 30rem;
+         height: auto;
          object-fit: cover;
          border-radius: 4px;
       }
       
    }
    .titre{
-      margin-left: 7%;
+      margin-left: 5%;
+      color:$color2;
+      margin-top: 0.5rem;
+      line-height: 1.5rem;
    }
    
 }
 
-
+.caroussel{
+   //parceque on va faire bouger le caroussel__container % au caroussel
+   position: relative;
+}
 .close-caroussel:after,
 .close-caroussel:before{
  background-color:$color1;
  cursor: pointer;
  width: 5px;
+ left:30px
  
 }
-.caroussel{
-   //parceque on va faire bouger le caroussel__container % au caroussel
-   position: relative;
-}
+
 .caroussel__container{
    transition: transform 0.3s;
    transform: translate3d(0, 0, 0)
