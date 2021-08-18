@@ -4,10 +4,10 @@ html {
 }
 
 body {
-   font-size: 0.75em; /* 12px */
-   width: 80%;
+   font-size: 0.75rem; /* 12px */
+   width: 90%;
    margin: auto;
-   font-family: "DM+Sans", sans-serif;
+   font-family: Arial, DM+Sans, sans-serif;
    @include responsive(smartphone){
       width: 94%;
    }
@@ -27,25 +27,26 @@ h1 {
    color:$color1;
 }
  
-
 img{
    object-fit: cover;
    width: 100%;
-   height: 100%;   
+   height: 100%; 
+   padding: 0;
+   margin: 0;  
 }
+
 a{
    text-decoration: none;
 }
 
 .filtres{
-   
    @include flex (row, center, center);
    @include responsive(smartphone){
       flex-wrap: wrap;
    }
-   
    li{
-      margin-right:0.5rem;      
+      margin-right:0.3rem; 
+      font-size: 0.6rem;     
    }
    li:last-child{
       margin-right: 0;

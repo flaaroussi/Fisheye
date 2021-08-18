@@ -24,6 +24,7 @@ export default class Caroussel {
       });
 
       //Attach event 'click' sur le btn 'next' .
+
       let btnNext = document.querySelector(".caroussel__next");
       btnNext.addEventListener("click", event => {
          this.showMediaNext();

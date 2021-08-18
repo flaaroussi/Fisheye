@@ -5,20 +5,23 @@
    overflow: hidden;
    .content {
       background-color: $color-white;
-      max-width: 60%;
-      height: 80%;
-      
+      width: 90%;//ini 60%
+      height: 90%;//80%
+      border:1px solid red;
+      margin: auto auto;
    }
    .caroussel-body{
       @include flex (row, space-between, center);
-      height: 80%;
+      height: 100%;//80
+      border:1px solid green;
       .media{
          display: flex;
          justify-items: center;
          justify-content: center;
-         width:90%;
+         width:100%;//90%
          height: 100%;
          text-align: center;
+         
       }
       img,
       video{
@@ -27,21 +30,22 @@
          object-fit: cover;
          border-radius: 4px;
       }
-      
    }
    .titre{
+      font-weight: normal;
+      font-size: 0.9rem;
       margin-left: 5%;
       color:$color2;
       margin-top: 0.5rem;
-      line-height: 1.5rem;
+      line-height: 1.2rem;
    }
-   
 }
 
 .caroussel{
    //parceque on va faire bouger le caroussel__container % au caroussel
    position: relative;
 }
+
 .close-caroussel:after,
 .close-caroussel:before{
  background-color:$color1;

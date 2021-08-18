@@ -75,7 +75,7 @@ export default class Modal {
       this.validateMsg(this.msgElt);
     })
     this.formElt.addEventListener("submit", event =>{
-      // empêcher l'envoi par défaut du formulaire lors du clique sur envoyer
+      // empêcher l'envoi par défaut du formulaire lors du click sur envoyer
       event.preventDefault();
       this.validate(this.formElt);
     })   

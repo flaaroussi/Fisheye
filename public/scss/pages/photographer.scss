@@ -27,9 +27,6 @@
    margin-top: 2rem;
 }
 
-
-
-
 .photographer-infos{
    display: flex;
 
@@ -64,4 +61,6 @@
    }
     //responsive design page photographe
     @include hidden;
+   
+    
 }

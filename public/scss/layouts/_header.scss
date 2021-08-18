@@ -7,21 +7,25 @@
    }
    @include responsive(smartphone){
         img{
-          width: 50%;
           height: 100%;
+          
+        }
+        figure{
+          
         }
         h1{
-          height: 100px !important;
-            padding-top: 40px !important;
-            padding-bottom: 40px !important;
-            position: absolute;
-            top: 0;
-            right:3%;
+          
+         
         }
-      
-    }
- 
-  
+        nav{
+        position: relative;
+         left: 0;
+         top: 100px
+          
+        }
+       
+  }
+}
   
   /* nav{
     //@include responsive(smartphone){
@@ -29,8 +33,25 @@
       //margin-top: 8rem;
       //flex-wrap: wrap;}
       
-   
-    
     
    
+
+/*
+.lien-inscrire{
+  height: 100px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  position: absolute;
+  top: 0;
+  right:3%;
 }
+.logo_nav nav ul li{
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+}
+.bar-filtres{
+  flex-wrap: wrap;
+}
+*/

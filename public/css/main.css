@@ -7,11 +7,11 @@ html {
 }
 
 body {
-  font-size: 0.75em;
+  font-size: 0.75rem;
   /* 12px */
-  width: 80%;
+  width: 90%;
   margin: auto;
-  font-family: "DM+Sans", sans-serif;
+  font-family: Arial, DMSans, sans-serif;
 }
 @media screen and (max-width: 650px) {
   body {
@@ -38,6 +38,8 @@ img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -58,7 +60,8 @@ a {
   }
 }
 .filtres li {
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
+  font-size: 0.6rem;
 }
 .filtres li:last-child {
   margin-right: 0;
@@ -138,11 +141,16 @@ a {
   overflow: auto;
   background: rgba(0, 0, 0, 0.4);
 }
+@media screen and (max-width: 650px) {
+  .bground {
+    background: red;
+  }
+}
 
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 600px;
+  width: 600px;
   background: #D3573C;
   overflow: hidden;
   position: relative;
@@ -247,8 +255,10 @@ textarea {
 }
 .ligthbox-modal .content {
   background-color: #FFFFFF;
-  max-width: 60%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
+  border: 1px solid red;
+  margin: auto auto;
 }
 .ligthbox-modal .caroussel-body {
   display: flex;
@@ -257,13 +267,14 @@ textarea {
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
-  height: 80%;
+  height: 100%;
+  border: 1px solid green;
 }
 .ligthbox-modal .caroussel-body .media {
   display: flex;
   justify-items: center;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   height: 100%;
   text-align: center;
 }
@@ -275,10 +286,12 @@ textarea {
   border-radius: 4px;
 }
 .ligthbox-modal .titre {
+  font-weight: normal;
+  font-size: 0.9rem;
   margin-left: 5%;
   color: #D3573C;
   margin-top: 0.5rem;
-  line-height: 1.5rem;
+  line-height: 1.2rem;
 }
 
 .caroussel {
@@ -321,9 +334,6 @@ textarea {
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
-  /* nav{
-    //@include responsive(smartphone){
-      align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
 }
 .headerheader-nav {
   display: flex;
@@ -335,19 +345,37 @@ textarea {
 }
 @media screen and (max-width: 650px) {
   .header img {
-    width: 50%;
     height: 100%;
   }
-  .header h1 {
-    height: 100px !important;
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-    position: absolute;
-    top: 0;
-    right: 3%;
+  .header nav {
+    position: relative;
+    left: 0;
+    top: 100px;
   }
 }
 
+/* nav{
+  //@include responsive(smartphone){
+    align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
+/*
+.lien-inscrire{
+  height: 100px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  position: absolute;
+  top: 0;
+  right:3%;
+}
+.logo_nav nav ul li{
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+}
+.bar-filtres{
+  flex-wrap: wrap;
+}
+*/
 .dashboard-photographers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

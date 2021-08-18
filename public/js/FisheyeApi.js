@@ -1,11 +1,8 @@
 
 //Etape 1: Récuperation des données à partir du fichier jason.
 
-/**
- * Class pour la gestion de l'api >> pour comminiquer ihm evec backend
- */
+ 
 export default class FisheyeApi{
-
    async fetchData(){
       let url = "datas/FishEyeData.json";
       // await interreompt l'execution de la fonction async
@@ -16,13 +13,8 @@ export default class FisheyeApi{
       if (!resultat.ok){
          return "erreur";
       }
-      //variable data stocke les données sous format json.
+      //Stocke les données sous format json dans le variable data .
       const data = await resultat.json();   
-      console.log(data)    
       return data;      
    }
-
-
-
-
 } 
