@@ -8,16 +8,18 @@ export default class Caroussel {
     * Constructeur de la class
     */
    constructor() {
+     
       // liste de media d'un photoraphe
       this.carousselMedias.forEach((currentElement, currentIndex) => {
+         
          // attacher l'event 'click' sur chaque media pour l'afficher dans la carroussel 
-         currentElement.addEventListener("click", event => {
+         currentElement.addEventListener("click", event => {   
+                 
             // Ouvrir le caroussel         
             this.modal = new Modal(0);
             //afficher le media sélectionné qui est indexé par currentIndex
             this.showMedia(currentIndex);
 
-            
             //Stocker l'index du media selectionné.
             this.lastIndexSelected = currentIndex;
          })

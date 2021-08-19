@@ -16,6 +16,10 @@
    }
    .price{
       color:$color-tag;
+      margin-bottom: 8px
+   }
+   .tagline{
+      margin-bottom: 8px 
    }
    &__direction{
       @include flex (row, space-between, center);

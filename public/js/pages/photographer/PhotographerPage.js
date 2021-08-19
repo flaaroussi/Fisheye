@@ -1,4 +1,4 @@
-//creation d'une page photographer dynamique à partir des données récupérer par la fetchData.
+//Creation d'une page photographer dynamique à partir des données récupées par l'api fetchData.
 //recupere les données d'un photographe selon son id figurant dans l'url
 //on creer un element 'article'ou on fait apparaitre le photographe selectionné par l'appel de 
 //la fonction getTemplatePhotographerProfil
@@ -7,8 +7,6 @@ import Modal from "./Modal.js";
 import Caroussel from "./Caroussel.js";
 
 export default class PhotographerPage {
-
-
 
    /**
     * Constucteur pour initiailiser la page
@@ -22,18 +20,23 @@ export default class PhotographerPage {
       //Affichage des médias d'un photographer
       this.triMedia(data.media, 'popularite');  
    }
-
+   /**
+    * 
+    * @param {array} photographers 
+    * @returns ????????
+    */
    displayProfil(photographers) {
       let ident = this.getPhotographerId();
       // photographer_profil
       let elt = document.getElementById("photographer_profil");
       let photographeSelectionne = photographers.filter(currentPhotographer => currentPhotographer.id == ident);
-      // si on a un id non connu on affiche un message d'erreur
-      //donc ajouter la condition suivante :photographeSelectionne[0].length:au moins un photographe existe.
+      // si on a un id non connu un message d'erreur est affiché
+      //donc on ajoute la condition suivante :photographeSelectionne[0].length:au moins un photographe existe.
       if(photographeSelectionne[0]){         
          elt.innerHTML = this.getTemplatePhotographerProfil(photographeSelectionne[0]);
+         console.log(photographeSelectionne[0]);
       }else{
-         elt.innerHTML = "Veuillez sélectionner un photographer";
+         elt.innerHTML = "Veuillez sélectionner un photographer.";
          return;
       }
       //ajout name du photographe dans le modal.
@@ -42,10 +45,9 @@ export default class PhotographerPage {
       document.querySelector(".photographer-footer-price").textContent = `${photographeSelectionne[0].price} € / jour`;
       // initialize le modal
       const modal = new Modal(1);
-      
    }
 
-   //Etatpe 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
+   //Etape 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
    //x=photographeSelectionne[0].
    getTemplatePhotographerProfil(x) {
       let template = `  
@@ -53,7 +55,7 @@ export default class PhotographerPage {
             <div class="photographer-infos">
                <div>   
                   <h2>${x.name}</h2>
-                  <p class="localisation">${x.city}</p>
+                  <p class="localisation">${x.city}, ${x.country}</p>
                   <p class="tagline">${x.tagline}</p>
                   <ul class="filtres filtres__direction">
                      ${x.tags.map(tag => `<li><a class="tag">#${tag}</a></li>`).join(" ")}
@@ -82,7 +84,7 @@ export default class PhotographerPage {
    }
 
    triMedia(medias, optionTri){
-      //Recuperation de l'id du photographe à afficher dans la page photographe.
+      //Récuperation de l'id du photographe à afficher dans la page photographe.
       let ident = this.getPhotographerId();
       //Permission de filter les medias du photographe à afficher dans la page photographe.
       let photographerMedia = medias.filter(currentMedia => currentMedia.photographerId == ident);
@@ -147,16 +149,21 @@ export default class PhotographerPage {
       this.calculTotalLikes();
    }
 
-   //Création element Image.
-   getTemplateImage(x) {
+   
+   /**
+    * Création element HTML Image.
+    * @param {objet} imgSelected données json d'une image.
+    * @returns {HTMLElement} template media :image.
+    */
+   getTemplateImage(imgSelected) {
       let template = ` 
                   <figure class="media">
-                     <img src="./public/images/${x.photographerId}/${x.image}" alt="${x.alt}"/>
+                     <img src="./public/images/${imgSelected.photographerId}/${imgSelected.image}" alt="${imgSelected.alt}"/>
                      <figcaption class="media-footer">
-                        <h2>${x.title}</h2>
+                        <h2>${imgSelected.title}</h2>
                         <!--data-like pour savoir est ce que le coueur est deja liké --> 
                         <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
-                           <span>${x.likes}</span>
+                           <span>${imgSelected.likes}</span>
                            <i class="far fa-heart"></i>
                         </div>   
                      </figcaption>
@@ -165,21 +172,33 @@ export default class PhotographerPage {
       return template;
    }
 
-   //Création element Video.
-   getTemplateVideo(x) {
+   
+   /**
+    * Création element HTML Video.
+    * @param {objet} videoSelected données json d'une video.
+    * @returns {HTMLElement} template media :video.  
+    */
+   getTemplateVideo(videoSelected) {
       let template = ` 
-                  <div class="media"><video  controls  poster ><source src="./public/images/${x.photographerId}/${x.video}" /></video></div>
-                  <div class="media-footer">  
-                     <h2>${x.title}</h2>
-                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${x.likes}</span> <i class="far fa-heart"></i>
+                <figure class="media">
+                  <video  controls role="button">
+                     <source src="./public/images/${videoSelected.photographerId}/${videoSelected.video}" />
+                  </video>
+                  <figcaption class="media-footer">  
+                     <h2>${videoSelected.title}</h2>
+                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${videoSelected.likes}</span> <i class="far fa-heart"></i>
                      </div>
-                  </div> 
-               </div>   
+                  </figcaption> 
+               </figure>   
       `;
       return template;
    }
 
-   //Permet de recuperer le id (dans l'url)d'un photographre.
+   //Permet de récuperer le id (dans l'url)d'un photographre.
+   /**
+    * 
+    * @returns 
+    */
    getPhotographerId() {
       let objetId = window.location.href.split("id=");
       let ident = objetId[1];
@@ -191,6 +210,7 @@ export default class PhotographerPage {
       let totalLikes = document.querySelectorAll(".totalLikes");
       totalLikes.forEach(currentElt => {
          currentElt.addEventListener("click", event => {
+            event.stopPropagation();
             let eltNbreLike = currentElt.querySelector("span");
             //eltNbreLike[1].textContent :je selectionne le deuxieme child./ 
             let currentTotalLike = parseInt(eltNbreLike.textContent);

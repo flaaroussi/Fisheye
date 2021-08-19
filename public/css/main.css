@@ -61,7 +61,7 @@ a {
 }
 .filtres li {
   margin-right: 0.3rem;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
 }
 .filtres li:last-child {
   margin-right: 0;
@@ -86,8 +86,8 @@ a {
   border-radius: 16px;
   padding-left: 6px;
   padding-right: 6px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .tag.actived {
   background-color: #901C1C;
@@ -143,7 +143,7 @@ a {
 }
 @media screen and (max-width: 650px) {
   .bground {
-    background: red;
+    background: #ffffff;
   }
 }
 
@@ -156,6 +156,12 @@ a {
   position: relative;
   padding-top: 10px;
   padding-bottom: 20px;
+  border-radius: 4px;
+}
+@media screen and (max-width: 650px) {
+  .content {
+    width: 94%;
+  }
 }
 
 label {
@@ -255,8 +261,8 @@ textarea {
 }
 .ligthbox-modal .content {
   background-color: #FFFFFF;
-  width: 90%;
-  height: 90%;
+  width: 599px;
+  height: 600px;
   border: 1px solid red;
   margin: auto auto;
 }
@@ -270,7 +276,7 @@ textarea {
   height: 100%;
   border: 1px solid green;
 }
-.ligthbox-modal .caroussel-body .media {
+.ligthbox-modal .caroussel-body .caroussel-media {
   display: flex;
   justify-items: center;
   justify-content: center;
@@ -334,8 +340,16 @@ textarea {
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
 }
-.headerheader-nav {
+.header h1 {
+  font-size: 1.4rem;
+  width: fit-content;
+}
+.header img {
+  width: 20rem;
+}
+.header .header-nav {
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
   flex-direction: row;
@@ -344,13 +358,27 @@ textarea {
   align-items: center;
 }
 @media screen and (max-width: 650px) {
+  .header-acceuil {
+    margin-bottom: 100px;
+  }
   .header img {
-    height: 100%;
+    width: 16rem;
+  }
+  .header h1 {
+    font-size: 1rem;
   }
   .header nav {
-    position: relative;
-    left: 0;
+    position: absolute;
     top: 100px;
+    width: 100%;
+    text-align: center;
+  }
+  .header nav .filtres {
+    width: 70%;
+    margin: auto;
+  }
+  .header nav .filtres li {
+    padding-bottom: 6px;
   }
 }
 
@@ -507,6 +535,10 @@ textarea {
 }
 .photographer-card .price {
   color: #C4C4C4;
+  margin-bottom: 8px;
+}
+.photographer-card .tagline {
+  margin-bottom: 8px;
 }
 .photographer-card__direction {
   display: flex;

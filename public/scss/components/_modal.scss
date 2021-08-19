@@ -9,7 +9,7 @@ width: 100%;
 overflow: auto;
 background:rgba(0,0,0,0.4);
 @include responsive(smartphone){
-  background: red;
+  background: #ffffff;
 }
 
 }
@@ -23,6 +23,10 @@ background:rgba(0,0,0,0.4);
    position: relative;
    padding-top: 10px;
    padding-bottom: 20px;
+   border-radius: 4px;
+   @include responsive(smartphone){
+    width: 94%;
+  }
    
  }
 

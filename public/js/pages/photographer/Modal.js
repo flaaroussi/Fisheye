@@ -22,6 +22,8 @@ export default class Modal {
   }
 
   initModal() {
+    //Vider le formulaire.
+    this.formElt.reset();
     this.modalBtn.addEventListener("click", event => {
       this.openModal();
     });
@@ -38,7 +40,7 @@ export default class Modal {
     })
   }
 
-  openModal() {
+  openModal() {    
     this.modalbg.style.display = "block";
     document.querySelector('.bground').setAttribute("aria-hidden","false");
     document.querySelector('.photographe-main').setAttribute("aria-hidden","true");

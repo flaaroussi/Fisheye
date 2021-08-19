@@ -5,8 +5,8 @@
    overflow: hidden;
    .content {
       background-color: $color-white;
-      width: 90%;//ini 60%
-      height: 90%;//80%
+      width: 599px;//ini 60%
+      height: 600px;//80%
       border:1px solid red;
       margin: auto auto;
    }
@@ -14,7 +14,7 @@
       @include flex (row, space-between, center);
       height: 100%;//80
       border:1px solid green;
-      .media{
+      .caroussel-media{
          display: flex;
          justify-items: center;
          justify-content: center;

@@ -11,113 +11,116 @@
    <title>FishEye</title>
 </head>
 
-   <header class="header" role="banner" aria-hidden="false">
-      <a href="index.html">
-         <figure>
-            <img src="./public/images/logo/logo.png" alt="Fisheye Home page">
-         </figure>
-      </a>
-   </header>
+<header class="header" role="banner" aria-hidden="false">
+   <a href="index.html">
+      <figure>
+         <img src="./public/images/logo/logo.png" alt="Fisheye Home page">
+      </figure>
+   </a>
+</header>
 
-   <main class="photographe-main" aria-hidden="false">
-      <!--profil photographer-->
-      <section id="photographer_profil" class="photographer-profil">
-         <!--code page photographer-->
-      </section>      
-
-
-      <!--Tri -->
-      <section class="media-tri">
-         <label for="media-tri-combo">Tri par</label>
-         <select name="tri" id="media-tri-combo">
-            <option value="popularite">Popularité</option>
-            <option value="date">Date</option>
-            <option value="titre">Titre</option>
-         </select>
-      </section>
+<main class="photographe-main" aria-hidden="false">
+   <!--profil photographer-->
+   <section id="photographer_profil" class="photographer-profil">
+   <!--Code page photographer-->
+   </section>
 
 
-
-      <!--Media photographer-->
-      <section  id="photographer_media" class="photographer-media">
-         <!--code media photographer-->
-
-      </section>
-
-   </main>
-   <footer class="photographer-footer" aria-label="Photographe infos supplémentaire">
-      <section> 
-         <aside >
-            <!--Total likes-->
-            <span class="photographer-footer-likes">0</span>
-            <i class="fas fa-heart"></i>
-         </aside>
-         <span class="photographer-footer-price">0</span>
-      </section>
+   <!--Tri -->
+   <section class="media-tri">
+      <label for="media-tri-combo">Tri par</label>
+      <select name="tri" id="media-tri-combo">
+         <option value="popularite">Popularité</option>
+         <option value="date">Date</option>
+         <option value="titre">Titre</option>
+      </select>
+   </section>
 
 
-   </footer>
 
-      <!--Modal-->
-   <div class="bground modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
-      <div class="content">
-         <!--Fermeture du modal-->
-         <span class="close"></span>
-         <div >
-            <!--Titre du modal-->
-            <h2 class="titre_modal">Contacter-moi</h2>
-            <h3 class="titre_modal" id="modal_photographer_name"></h3>
-            <!--Formulaire à remplir-->
-            <form class="form" name="formulaire" action="#" aria-labelledby="modalContact" method="get" >
-               <div class="formData">
-                  <label class="" for="first-name">Prénom</label><br>
-                  <input class="text-control" type="text" id="first-name" name="prenom" minlength="2" data-error-visible=""/><br>
-                  <span class="error" id="first_error"></span>
-               </div>
-               <div class="formData">
-                  <label class="" for="last-name">Nom</label><br>
-                  <input class="text-control" type="text" id="last-name" name="nom" data-error-visible="" /><br>
-                  <span class="error" id="last_error"></span>
-               </div>
-               <div class="formData">
-                  <label class="email" for="">Email</label><br>
-                  <input class="text-control" type="email" id="email" name="email" placeholder="nomutilisateur@example.com" minlength="3" maxlength="64" data-error-visible=""/><br>
-                  <span class="error" id="email_error"></span>
-               </div>
-               <div class="formData">
-                  <label class="" for="message" >Votre message</label><br>
-                  <textarea  id="message" name="message" rows="4" cols="5" data-error-visible="">Vous pouvez écrire içi.</textarea><br>
-                  <span class="error" id="msg_error"></span>
-               </div>
-               <button class="btn btn_envoyer" >Envoyer</button>
-            </form>
-         </div>
+   <!--Media photographer-->
+   <section id="photographer_media" class="photographer-media">
+      <!--code media photographer-->
+
+   </section>
+
+</main>
+<footer class="photographer-footer" aria-label="Photographe infos supplémentaire">
+   <section>
+      <aside>
+         <!--Total likes-->
+         <span class="photographer-footer-likes">0</span>
+         <i class="fas fa-heart"></i>
+      </aside>
+      <span class="photographer-footer-price">0</span>
+   </section>
+
+
+</footer>
+
+<!--Modal-->
+<div class="bground modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+   <div class="content">
+      <!--Fermeture du modal-->
+      <span class="close"></span>
+      <div>
+         <!--Titre du modal-->
+         <h2 class="titre_modal">Contacter-moi</h2>
+         <h3 class="titre_modal" id="modal_photographer_name"></h3>
+         <!--Formulaire à remplir-->
+         <form class="form" name="formulaire" action="#" aria-labelledby="modalContact" method="get">
+            <div class="formData">
+               <label class="" for="first-name">Prénom</label><br>
+               <input class="text-control" type="text" id="first-name" name="prenom" minlength="2"
+                  data-error-visible="" /><br>
+               <span class="error" id="first_error"></span>
+            </div>
+            <div class="formData">
+               <label class="" for="last-name">Nom</label><br>
+               <input class="text-control" type="text" id="last-name" name="nom" data-error-visible="" /><br>
+               <span class="error" id="last_error"></span>
+            </div>
+            <div class="formData">
+               <label class="email" for="">Email</label><br>
+               <input class="text-control" type="email" id="email" name="email" placeholder="nomutilisateur@example.com"
+                  minlength="3" maxlength="64" data-error-visible="" /><br>
+               <span class="error" id="email_error"></span>
+            </div>
+            <div class="formData">
+               <label class="" for="message">Votre message</label><br>
+               <textarea id="message" name="message" rows="4" cols="5"
+                  data-error-visible="">Vous pouvez écrire içi.</textarea><br>
+               <span class="error" id="msg_error"></span>
+            </div>
+            <button class="btn btn_envoyer">Envoyer</button>
+         </form>
       </div>
    </div>
+</div>
 
-   <!-- Caroussel  -->
-   <div class="bground ligthbox-modal" aria-hidden="true" role="dialog" aria-describedby="modalcaroussel">
-      <div class="content content-caroussel">
-         <div class="close close-caroussel"></div>
+<!-- Caroussel  -->
+<div class="bground ligthbox-modal" aria-hidden="true" role="dialog" aria-describedby="modalcaroussel">
+   <div class="content content-caroussel">
+      <div class="close close-caroussel"></div>
 
-         <div class="caroussel-body">
-            <i class="fas fa-chevron-left caroussel__prev" title="Précédent" ></i>
-            <div id="caroussel_photographer_media" class="media">
-               <!--Image/video a integrer via js-->
-            </div>            
-            <i class="fas fa-chevron-right caroussel__next" title="Suivant"></i>
+      <div class="caroussel-body">
+         <i class="fas fa-chevron-left caroussel__prev" title="Précédent"></i>
+         <div id="caroussel_photographer_media" class="caroussel-media">
+            <!--Image/video a integrer via js-->
          </div>
-
-         <h2 id="caroussel_photographer_titre" class="titre">titre</h2>
+         <i class="fas fa-chevron-right caroussel__next" title="Suivant"></i>
       </div>
+
+      <h2 id="caroussel_photographer_titre" class="titre">titre</h2>
    </div>
-            
-   
+</div>
 
-   
 
-   <script type="module" src="public/js/pages/photographer/main.js"></script>
-   
+
+
+
+<script type="module" src="public/js/pages/photographer/main.js"></script>
+
 
 
 </body>

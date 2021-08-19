@@ -1,20 +1,23 @@
 
-export default class HomePage{
+export default class IndexPage{
+
+   /**
+    * Afficher les 6 photographes.
+    * @param {array} listPhotographe liste des photographes.
+    */
 
    displayPhotographers(listPhotographe){
       let elt = document.getElementById("dashboard_photographers");
       elt.innerHTML = "";
 
       listPhotographe.forEach(currentPhotographer =>{
-      //for(let i=0; i<listPhotographe.length;i++){     
          //Creation des blocs des 6 photographes.
-         console.log(currentPhotographer);
          let article = document.createElement("article");
-         article.className = "photographer-card";  
-   
-         article.innerHTML = this.getTemplatePhotographer(currentPhotographer);       
-         
-         elt.appendChild(article)      
+         article.className = "photographer-card";   
+         article.innerHTML = this.getTemplatePhotographer(currentPhotographer);   
+             
+         // ajouter l'article dans elt
+         elt.appendChild(article) ;  
       })
    }
 
