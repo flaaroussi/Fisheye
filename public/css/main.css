@@ -258,12 +258,12 @@ textarea {
 .ligthbox-modal {
   background: #FFFFFF;
   overflow: hidden;
+  padding-top: 4rem;
 }
 .ligthbox-modal .content {
   background-color: #FFFFFF;
   width: 599px;
   height: 600px;
-  border: 1px solid red;
   margin: auto auto;
 }
 .ligthbox-modal .caroussel-body {
@@ -273,8 +273,7 @@ textarea {
   /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: space-between;
   align-items: center;
-  height: 100%;
-  border: 1px solid green;
+  height: 99%;
 }
 .ligthbox-modal .caroussel-body .caroussel-media {
   display: flex;

@@ -34,7 +34,6 @@ export default class PhotographerPage {
       //donc on ajoute la condition suivante :photographeSelectionne[0].length:au moins un photographe existe.
       if(photographeSelectionne[0]){         
          elt.innerHTML = this.getTemplatePhotographerProfil(photographeSelectionne[0]);
-         console.log(photographeSelectionne[0]);
       }else{
          elt.innerHTML = "Veuillez sélectionner un photographer.";
          return;
@@ -47,18 +46,22 @@ export default class PhotographerPage {
       const modal = new Modal(1);
    }
 
-   //Etape 2:Création template d'un photographe à travers la définition de la fct  getTemplatePhotographer.
-   //x=photographeSelectionne[0].
-   getTemplatePhotographerProfil(x) {
+  
+   /**
+    * Création structure HTML d'un photographe
+    * @param {Objet} photographeProfil les données d'un photographe.
+    * @returns {HTMLElement} element balise article dans laquelle on affiche le profil d'un photographer.
+    */
+   getTemplatePhotographerProfil(photographeProfil) {
       let template = `  
          <article class="photographer-card photographer-card__direction"> 
             <div class="photographer-infos">
                <div>   
-                  <h2>${x.name}</h2>
-                  <p class="localisation">${x.city}, ${x.country}</p>
-                  <p class="tagline">${x.tagline}</p>
+                  <h2>${photographeProfil.name}</h2>
+                  <p class="localisation">${photographeProfil.city}, ${photographeProfil.country}</p>
+                  <p class="tagline">${photographeProfil.tagline}</p>
                   <ul class="filtres filtres__direction">
-                     ${x.tags.map(tag => `<li><a class="tag">#${tag}</a></li>`).join(" ")}
+                     ${photographeProfil.tags.map(tag => `<li><a class="tag">#${tag}</a></li>`).join(" ")}
                   </ul>  
                </div>   
                <div>
@@ -66,14 +69,19 @@ export default class PhotographerPage {
                </div>
             </div>
             <figure>
-               <img src="./public/images/Photographers/${x.portrait}" alt="${x.alt}"/>
+               <img src="./public/images/Photographers/${photographeProfil.portrait}" alt="${photographeProfil.alt}"/>
             </figure>
          </article> 
          `;
       return template;
+      
    }
 
-   //Création d'un tri.
+   
+   /**
+    * Selection du tag popularité par défaut?????????????
+    * @param {array} medias medias des 6 photographes
+    */
    initTri(medias){
       let triCombo = document.getElementById('media-tri-combo');
       // selectionner popularité par défaut
@@ -83,14 +91,19 @@ export default class PhotographerPage {
       })         
    }
 
+   /**
+    * Tri medias par popularité,date ou titre.
+    * @param {array} medias 
+    * @param {*} optionTri ?????????????(NodeList)
+    */
    triMedia(medias, optionTri){
       //Récuperation de l'id du photographe à afficher dans la page photographe.
       let ident = this.getPhotographerId();
-      //Permission de filter les medias du photographe à afficher dans la page photographe.
+      //Permission de filtrer les medias du photographe à afficher dans la page photographe.
       let photographerMedia = medias.filter(currentMedia => currentMedia.photographerId == ident);
       // tri des medias par option sélectionnée
       switch(optionTri){
-         case 'popularite' : 
+            case 'popularite' : 
             /// tritemen du tri pa popularite
             photographerMedia.sort(function (a, b) {
                return b.likes - a.likes;
@@ -119,7 +132,7 @@ export default class PhotographerPage {
 
    /**
     * Traitement media par photographe
-    * @param {*} listMedia 
+    * @param {array} listMedia 
     */
    displayMedia(listMedia) {
       let elt = document.getElementById("photographer_media");
@@ -140,7 +153,6 @@ export default class PhotographerPage {
          }
          elt.appendChild(article)
       })
-
       //l'ajout d'un like lorsqu'on click sur le coeur.
       this.addLikes();
       // initialize le caroussel
@@ -194,10 +206,10 @@ export default class PhotographerPage {
       return template;
    }
 
-   //Permet de récuperer le id (dans l'url)d'un photographre.
+   
    /**
-    * 
-    * @returns 
+    * Permet de récuperer le id (dans l'url)d'un photographre.
+    * @returns {number}
     */
    getPhotographerId() {
       let objetId = window.location.href.split("id=");
@@ -205,7 +217,10 @@ export default class PhotographerPage {
       return ident;
    }
 
-   //ajouter un like.
+   
+   /**
+    * Ajouter un like.
+    */
    addLikes() {
       let totalLikes = document.querySelectorAll(".totalLikes");
       totalLikes.forEach(currentElt => {
@@ -237,7 +252,10 @@ export default class PhotographerPage {
       })
    }
 
-   //Fonction qui calcul Total global des likes.
+   
+   /**
+    * Calcul Total global des likes.
+    */
    calculTotalLikes(){
       //je dois pointer sur le span de chaque media.
       let mediaLikesElts = document.querySelectorAll(".totalLikes span");
@@ -247,7 +265,7 @@ export default class PhotographerPage {
          //Cumuler les likes.
          totalLikes  = totalLikes + parseInt(currentSpan.textContent);
       })
-         //afficher le resultat. 
+         //Afficher le resultat. 
          document.querySelector(".photographer-footer-likes").textContent = totalLikes;
    }
 }

@@ -3,17 +3,16 @@
 .ligthbox-modal{
    background:$color-white;
    overflow: hidden;
+   padding-top: 4rem;
    .content {
       background-color: $color-white;
       width: 599px;//ini 60%
       height: 600px;//80%
-      border:1px solid red;
       margin: auto auto;
    }
    .caroussel-body{
       @include flex (row, space-between, center);
-      height: 100%;//80
-      border:1px solid green;
+      height: 99%;//80
       .caroussel-media{
          display: flex;
          justify-items: center;

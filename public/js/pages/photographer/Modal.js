@@ -1,5 +1,5 @@
 
-//
+
 export default class Modal {
 
   modalBtn = null;
@@ -55,7 +55,8 @@ export default class Modal {
   }
 
   //control & validation Modal.
-  //DOM Elements.(on pointe sur les elts de la DOM)
+  //DOM Elements.
+  //On pointe sur les elts de la DOM.
   firstNameElt = document.getElementById("first-name");
   lastNameElt = document.getElementById("last-name");
   emailElt = document.getElementById("email");
@@ -143,17 +144,23 @@ export default class Modal {
     return true;
   }
 
+  /**
+   * 
+   * @param {*} formContact 
+   * @returns {Boolean} 
+   */
+
   validate(formContact) {
     let isValidatePrenom = this.validatePrenom(formContact.nom);
     let isValidateNom = this.validateNom(formContact.prenom);
     let isValidateEmail = this.validateEmail(formContact.email);
     let isValidateMsg = this.validateMsg(formContact.message);
     if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg) {
-      this.doCloseModal();              // fonction qui permet de fermer le formulaire.
+      this.doCloseModal();             
       alert("Merci! Votre message a été envoyé.");
-      return false;                   //si return false le formulaire ne sera pas envoyé.
+      return false; //????????????                
     } else {  
-      return false;
+      return false; //????????????
     }
   }
 }
