@@ -6,6 +6,12 @@ export default class Modal {
   modalbg = null;
   modalClose = null;
 
+
+  /**
+   * 
+   * @param {*} isModal 
+   */
+
   constructor(isModal){
     // carrousel
       if(isModal == '0'){
@@ -20,6 +26,9 @@ export default class Modal {
         this.initModal();
       }
   }
+  /**
+   * 
+   */
 
   initModal() {
     //Vider le formulaire.
@@ -84,6 +93,12 @@ export default class Modal {
     })   
   }
 
+  /**
+   * Validation de l'input prénom.
+   * @param {HTMLElement} prenomElt input ou saisir le prénom ?????? A valider
+   * @returns {Boolean} true
+   */
+
   validatePrenom(prenomElt) {
     let prenom = prenomElt.value;
     let regexPrenom = new RegExp("^[a-zA-Z]{2,}$");
@@ -101,6 +116,12 @@ export default class Modal {
     return true;
   }
 
+  /**
+   * Validation de l'input nom.
+   * @param {HTMLElement} prenomElt input où saisir le nom ?????? A valider
+   * @returns {Boolean} true
+   */
+
   validateNom(nomElt) {
     let nom = nomElt.value;
     let regexNom = new RegExp("^[a-zA-Z]{2,}$");
@@ -116,6 +137,11 @@ export default class Modal {
     return true;
   }
   
+  /**
+   * Validation de l'input e mail.
+   * @param {HTMLElement} prenomElt input où saisir l'e mail' ?????? A valider
+   * @returns {Boolean} true
+   */
   validateEmail(emailElt) {
     let email = emailElt.value;
     let msgErrorEmail = document.getElementById("email_error");
@@ -130,8 +156,12 @@ export default class Modal {
     return true;
   }
 
+   /**
+   * Validation de la testerea.
+   * @param {HTMLElement} prenomElt input où saisir un message' ?????? A valider
+   * @returns {Boolean} true
+   */ 
   validateMsg(msgElt) {
-    console.log(msgElt.value);
     let msg = msgElt.value;
     let msgErrorMsg = document.getElementById("msg_error");
     msgErrorMsg.textContent = "";
@@ -146,11 +176,13 @@ export default class Modal {
 
   /**
    * 
-   * @param {*} formContact 
+   * @param {Formulaire} formContact 
    * @returns {Boolean} 
    */
 
   validate(formContact) {
+
+    console.log(formContact);
     let isValidatePrenom = this.validatePrenom(formContact.nom);
     let isValidateNom = this.validateNom(formContact.prenom);
     let isValidateEmail = this.validateEmail(formContact.email);

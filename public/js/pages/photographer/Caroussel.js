@@ -6,31 +6,30 @@ export default class Caroussel {
    modal = null;
    
    /**
-    * Constructeur de la class
+    * 
     */
    
    constructor(){
-      // liste de media d un photoraphe
+      // liste des medias d un photoraphe
       this.carousselMedias.forEach((currentElement, currentIndex) => {
-         // attacher l event click sur chaque media pour l afficher dans le carroussel 
+         // attacher l'event 'click' sur chaque media pour l afficher dans le carrousse.l 
          currentElement.addEventListener("click", event => {   
-                 
             // Ouvrir le caroussel         
             this.modal = new Modal(0);
-            //afficher le media sélectionné qui est indexe par currentIndex
+            //afficher le media sélectionné qui est indexé par currentIndex
             this.showMedia(currentIndex);
             //Stocker l index du media selectionné.
             this.lastIndexSelected = currentIndex;
          })
       });
 
-      // Attach event click sur le btn 'next' .
+      //Attacher l'event 'click' sur le btn 'next' .
       let btnNext = document.querySelector(".caroussel__next");
       btnNext.addEventListener("click", event => {
          this.showMediaNext();
       })
 
-      //Attach event click sur le btn preview.
+      //Attacher l'event 'click' sur le btn preview.
       let btnPrev = document.querySelector(".caroussel__prev");
       btnPrev.addEventListener("click", event => {
          this.showMediaPrev();
@@ -70,9 +69,9 @@ export default class Caroussel {
       }
    }
 
-   /**
-    * 
-    * @param {*} index 
+   /**????????????????????
+    * Afficher medias d'un photographe selon index selectionné.
+    * @param {number} index :numero du media selectionné.
     */
    showMedia(index) {
       if (index >= 0 && index < this.carousselMedias.length) {
@@ -97,9 +96,7 @@ export default class Caroussel {
          //afficher le titre du media
          let carousselTitreMedia = document.getElementById('caroussel_photographer_titre');
          let currentTitreMedia = mediaSelected.querySelector('h2').textContent;
-
          carousselTitreMedia.textContent = currentTitreMedia
-
       }
    }
 }

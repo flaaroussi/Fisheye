@@ -25,32 +25,39 @@ export default class IndexPage {
    initFilter(photographe) {
       let listTag = document.querySelectorAll(".header-nav a.tag");
       listTag.forEach(currentTag => {
-         currentTag.addEventListener('click', event => {
+         currentTag.addEventListener('click', e => {
+            // Annuler style du tag selectionné.
             listTag.forEach(tag => {
-               if (currentTag != tag) tag.classList.remove('actived');
+              if(tag !=currentTag) tag.classList.remove('actived');
             })
+
             let tagSelected = null;
-            //event.target.classList.value:je recupere la valeur 
-            //de l'element (liste des class css ) ciblé par un click.            
-            //indexof permet de chercher le mot'actived' dans la classList.
-            if (event.target.classList.value.indexOf('actived') >= 0) {
-               event.target.classList.remove('actived');
-            } else {
-               event.target.classList.add('actived');
-               tagSelected = event.target.getAttribute('data-filtre');
+
+            if(e.target.classList.value.indexOf('actived') >= 0){
+               e.target.classList.remove('actived');
+            }else{
+               //Ajouter la class actived à l'element selectionné.
+               e.target.classList.add('actived');
+               //Récupérer la valeur du data filtre du tag selectionné.
+               tagSelected = e.target.getAttribute('data-filtre');
+
             }
-            let listPhotographe = [];
+
+            let listPhotographeFiltre = [];
+
             if (tagSelected) {
-               photographe.forEach(x => {
-                  if (x.tags.indexOf(tagSelected) >= 0) {
-                     listPhotographe.push(x)
+               photographe.forEach(currentPhotographe => {
+                  if (currentPhotographe.tags.indexOf(tagSelected) >= 0) {
+                     listPhotographeFiltre.push(currentPhotographe)
                   }
                })
             } else {
-               listPhotographe = photographe;
+               listPhotographeFiltre = photographe;
             }
-            // let listPhotographe = photographers.filter(photographer => photographer.tags.includes(tagSelected));
-            this.displayPhotographers(listPhotographe);
+
+            console.log(listPhotographeFiltre)
+            // let listPhotographe = photographers.filter(photographer => photographer.tags.includes(tagSelected)).
+            this.displayPhotographers(listPhotographeFiltre);
          })
       })
    }

@@ -6,7 +6,9 @@ import PhotographerPage from "./PhotographerPage.js";
 const fisheyeApi = new FisheyeApi();
 
 
-//retourner les données de json.
+/**
+ * Recupérer la vrai valeur des données de json.???????????
+ */
 fisheyeApi.fetchData()
 .then(data => {
    const photographerPage = new PhotographerPage(data);      

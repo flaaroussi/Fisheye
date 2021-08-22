@@ -55,6 +55,10 @@
       @include flex (row, space-between, center);
       padding-top: 0.2rem;
       .fa-heart,
+      span{
+         font-size: 1rem;
+      }
+      .fa-heart,
       span,
       h2{
          color :$color1;

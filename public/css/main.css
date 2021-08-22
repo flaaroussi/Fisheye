@@ -81,7 +81,7 @@ a {
 }
 
 .tag {
-  border: 1px solid #C4C4C4;
+  border: 1px solid #979797;
   color: #901C1C;
   border-radius: 16px;
   padding-left: 6px;
@@ -462,6 +462,10 @@ textarea {
   padding-top: 0.2rem;
 }
 .media-card .media-footer .fa-heart,
+.media-card .media-footer span {
+  font-size: 1rem;
+}
+.media-card .media-footer .fa-heart,
 .media-card .media-footer span,
 .media-card .media-footer h2 {
   color: #901C1C;
@@ -533,7 +537,7 @@ textarea {
   color: #901C1C;
 }
 .photographer-card .price {
-  color: #C4C4C4;
+  color: #979797;
   margin-bottom: 8px;
 }
 .photographer-card .tagline {
