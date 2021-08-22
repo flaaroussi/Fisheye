@@ -266,6 +266,11 @@ textarea {
   height: 600px;
   margin: auto auto;
 }
+@media screen and (max-width: 650px) {
+  .ligthbox-modal .content {
+    width: 90%;
+  }
+}
 .ligthbox-modal .caroussel-body {
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/

@@ -39,6 +39,13 @@ export default class Modal {
     this.modalClose.addEventListener("click", event => {
       this.doCloseModal();
     })
+    document.addEventListener('keydown', event => {
+      switch (event.key) {        
+         case "Escape":
+            this.doCloseModal();
+            break;
+      }
+   })
     //Initialisation des controles.
       this.controleForm();
   }

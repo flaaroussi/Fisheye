@@ -7,6 +7,9 @@
    .content {
       background-color: $color-white;
       width: 599px;//ini 60%
+      @include responsive(smartphone){
+         width: 90%;
+       }
       height: 600px;//80%
       margin: auto auto;
    }

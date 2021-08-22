@@ -10,6 +10,7 @@ export default class Caroussel {
     */
    
    constructor(){
+      let toto = 1;
       // liste des medias d un photoraphe
       this.carousselMedias.forEach((currentElement, currentIndex) => {
          // attacher l'event 'click' sur chaque media pour l afficher dans le carrousse.l 
@@ -45,7 +46,7 @@ export default class Caroussel {
                this.showMediaPrev();
                break;
             case "Escape":
-               this.modal.doCloseModal();
+              if(this.modal) this.modal.doCloseModal();
                break;
          }
       })

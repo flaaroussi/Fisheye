@@ -170,13 +170,13 @@ export default class PhotographerPage {
    getTemplateImage(imgSelected) {
       let template = ` 
                   <figure class="media">
-                     <img src="./public/images/${imgSelected.photographerId}/${imgSelected.image}" alt="${imgSelected.alt}"/>
+                     <a href="#"><img src="./public/images/${imgSelected.photographerId}/${imgSelected.image}" alt="${imgSelected.alt}"/></a>
                      <figcaption class="media-footer">
                         <h2>${imgSelected.title}</h2>
                         <!--data-like pour savoir est ce que le coueur est deja liké --> 
                         <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
                            <span>${imgSelected.likes}</span>
-                           <i class="far fa-heart"></i>
+                           <a href="#"><i class="far fa-heart"></i></a>
                         </div>   
                      </figcaption>
                   </figure>
@@ -198,7 +198,8 @@ export default class PhotographerPage {
                   </video>
                   <figcaption class="media-footer">  
                      <h2>${videoSelected.title}</h2>
-                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${videoSelected.likes}</span> <i class="far fa-heart"></i>
+                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${videoSelected.likes}</span> 
+                     <a href="#"><i class="far fa-heart"></i></a>
                      </div>
                   </figcaption> 
                </figure>   
@@ -213,7 +214,7 @@ export default class PhotographerPage {
     */
    getPhotographerId() {
       let objetId = window.location.href.split("id=");
-      let ident = objetId[1];
+      let ident = parseInt(objetId[1]);
       return ident;
    }
 
