@@ -9,27 +9,28 @@ export default class Modal {
 
   /**
    * 
-   * @param {*} isModal 
+   * @param {Number} isModal  0 ou bien 1.
    */
 
   constructor(isModal){
-    // carrousel
+    // Afficher carrousel.
       if(isModal == '0'){
         this.modalbg = document.querySelector(".ligthbox-modal");
         this.modalClose = document.querySelector(".ligthbox-modal .close");
         this.initCarousselModal();
         this.openModal();
       }else{
+        //Afficher Modal.
         this.modalBtn = document.querySelector(".modal-btn");
         this.modalbg = document.querySelector(".modal");
         this.modalClose = document.querySelector(".modal .close");
         this.initModal();
       }
   }
+  
   /**
-   * 
+   *  
    */
-
   initModal() {
     //Vider le formulaire.
     this.formElt.reset();
@@ -80,7 +81,7 @@ export default class Modal {
   formElt = document.querySelector(".form")
 
   controleForm() {
-    //event input est simulaire a event keyup.
+    
     this.firstNameElt.addEventListener("input", event => {
       this.validatePrenom(this.firstNameElt);
     })
@@ -94,7 +95,7 @@ export default class Modal {
       this.validateMsg(this.msgElt);
     })
     this.formElt.addEventListener("submit", event =>{
-      // empêcher l'envoi par défaut du formulaire lors du click sur envoyer
+      // Empêcher l'envoi par défaut du formulaire lors du click sur envoyer
       event.preventDefault();
       this.validate(this.formElt);
     })   
@@ -102,7 +103,7 @@ export default class Modal {
 
   /**
    * Validation de l'input prénom.
-   * @param {HTMLElement} prenomElt input ou saisir le prénom ?????? A valider
+   * @param {HTMLElement} prenomElt input où saisir le prénom 
    * @returns {Boolean} true
    */
 
@@ -125,7 +126,7 @@ export default class Modal {
 
   /**
    * Validation de l'input nom.
-   * @param {HTMLElement} prenomElt input où saisir le nom ?????? A valider
+   * @param {HTMLElement} prenomElt input où saisir le nom 
    * @returns {Boolean} true
    */
 
@@ -146,7 +147,7 @@ export default class Modal {
   
   /**
    * Validation de l'input e mail.
-   * @param {HTMLElement} prenomElt input où saisir l'e mail' ?????? A valider
+   * @param {HTMLElement} prenomElt input où saisir l'e mail
    * @returns {Boolean} true
    */
   validateEmail(emailElt) {
@@ -165,7 +166,7 @@ export default class Modal {
 
    /**
    * Validation de la testerea.
-   * @param {HTMLElement} prenomElt input où saisir un message' ?????? A valider
+   * @param {HTMLElement} prenomElt input où saisir un message
    * @returns {Boolean} true
    */ 
   validateMsg(msgElt) {
@@ -184,12 +185,10 @@ export default class Modal {
   /**
    * 
    * @param {Formulaire} formContact 
-   * @returns {Boolean} 
+   * @returns {Boolean} false
    */
 
   validate(formContact) {
-
-    console.log(formContact);
     let isValidatePrenom = this.validatePrenom(formContact.nom);
     let isValidateNom = this.validateNom(formContact.prenom);
     let isValidateEmail = this.validateEmail(formContact.email);
@@ -197,9 +196,9 @@ export default class Modal {
     if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg) {
       this.doCloseModal();             
       alert("Merci! Votre message a été envoyé.");
-      return false; //????????????                
+      return false;             
     } else {  
-      return false; //????????????
+      return false; 
     }
   }
 }

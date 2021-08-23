@@ -5,31 +5,32 @@
 
 import Modal from "./Modal.js";
 import Caroussel from "./Caroussel.js";
+import MediaFactory from "../../factory/MediaFactory.js";
 
 export default class PhotographerPage {
 
    /**
-    * Constucteur pour initiailiser la page
-    * @param {*} data 
+    * 
+    * @param {Array} data objet :6 photographes et 59 medias.
     */
    constructor(data){
-      // Affichage du profil
+      // Affichager le profil d'un photographe.
       this.displayProfil(data.photographers);
-      //Attache event change au combo de tri.
+      //Attacher event change au combo de tri.
       this.initTri(data.media);
-      //Affichage des médias d'un photographer
+      //Affichager les médias d'un photographer
       this.triMedia(data.media, 'popularite');  
    }
+
    /**
-    * 
+    * Création d'un profil photographe
     * @param {array} photographers 
-    * @returns ????????
     */
    displayProfil(photographers) {
-      let ident = this.getPhotographerId();
+      let idPhotographe = this.getPhotographerId();
       // photographer_profil
       let elt = document.getElementById("photographer_profil");
-      let photographeSelectionne = photographers.filter(currentPhotographer => currentPhotographer.id == ident);
+      let photographeSelectionne = photographers.filter(currentPhotographer => currentPhotographer.id == idPhotographe);
       // si on a un id non connu un message d'erreur est affiché
       //donc on ajoute la condition suivante :photographeSelectionne[0].length:au moins un photographe existe.
       if(photographeSelectionne[0]){         
@@ -38,19 +39,18 @@ export default class PhotographerPage {
          elt.innerHTML = "Veuillez sélectionner un photographer.";
          return;
       }
-      //ajout name du photographe dans le modal.
+      //Ajouter le nom du photographe dans le modal.
       document.getElementById("modal_photographer_name").textContent = photographeSelectionne[0].name;
-      //ajout prix dans le footer.
+      //Ajouter le prix du photographe dans le footer.
       document.querySelector(".photographer-footer-price").textContent = `${photographeSelectionne[0].price} € / jour`;
-      // initialize le modal
+      // initialiser le modal
       const modal = new Modal(1);
    }
-
   
    /**
-    * Création structure HTML d'un photographe
+    * Création de la structure HTML d'un photographe
     * @param {Objet} photographeProfil les données d'un photographe.
-    * @returns {HTMLElement} element balise article dans laquelle on affiche le profil d'un photographer.
+    * @returns {HTMLElement} Balize "article" dans laquelle on affiche le profil d'un photographer.
     */
    getTemplatePhotographerProfil(photographeProfil) {
       let template = `  
@@ -61,7 +61,7 @@ export default class PhotographerPage {
                   <p class="localisation">${photographeProfil.city}, ${photographeProfil.country}</p>
                   <p class="tagline">${photographeProfil.tagline}</p>
                   <ul class="filtres filtres__direction">
-                     ${photographeProfil.tags.map(tag => `<li><a class="tag">#${tag}</a></li>`).join(" ")}
+                     ${photographeProfil.tags.map(tag => `<li><a href="index.html" class="tag">#${tag}</a></li>`).join(" ")}
                   </ul>  
                </div>   
                <div>
@@ -74,37 +74,36 @@ export default class PhotographerPage {
          </article> 
          `;
       return template;
-      
    }
-
    
    /**
-    * Selection du tag popularité par défaut?????????????
+    * Tri par 
     * @param {array} medias medias des 6 photographes
     */
    initTri(medias){
       let triCombo = document.getElementById('media-tri-combo');
-      // selectionner popularité par défaut
+      //Sélectionner popularité par défaut
       triCombo.value = "popularite";
       triCombo.addEventListener("change",event =>{
          this.triMedia(medias, triCombo.value);
+
       })         
    }
 
    /**
     * Tri medias par popularité,date ou titre.
     * @param {array} medias 
-    * @param {*} optionTri ?????????????(NodeList)
+    * @param {String} optionTri :tri par popularité,titre ou par date
     */
    triMedia(medias, optionTri){
-      //Récuperation de l'id du photographe à afficher dans la page photographe.
-      let ident = this.getPhotographerId();
-      //Permission de filtrer les medias du photographe à afficher dans la page photographe.
-      let photographerMedia = medias.filter(currentMedia => currentMedia.photographerId == ident);
+      //Récuperation de l'id du photographe à afficher.
+      let idPhotographe = this.getPhotographerId();
+      //Filtrer les medias d'un photographe à afficher.
+      let photographerMedia = medias.filter(currentMedia => currentMedia.photographerId == idPhotographe);
       // tri des medias par option sélectionnée
       switch(optionTri){
             case 'popularite' : 
-            /// tritemen du tri pa popularite
+            //Traitement du tri par popularité.
             photographerMedia.sort(function (a, b) {
                return b.likes - a.likes;
             });
@@ -134,23 +133,20 @@ export default class PhotographerPage {
     * Traitement media par photographe
     * @param {array} listMedia 
     */
+
    displayMedia(listMedia) {
       let elt = document.getElementById("photographer_media");
+      //vider l'eltAvant d'afficher les medias 
       elt.innerHTML = "";
-      let ident = this.getPhotographerId();
-      let photographerMedia = listMedia.filter(currentMedia => currentMedia.photographerId == ident);
+      let idPhotographe = this.getPhotographerId();
+      let photographerMedia = listMedia.filter(currentMedia => currentMedia.photographerId == idPhotographe);
 
       photographerMedia.forEach(currentMedia => {
          let article = document.createElement("article");
          article.className = "media-card";
-         //Afficher soit image soit video
-         if (currentMedia.hasOwnProperty("image")) {
-            article.innerHTML = this.getTemplateImage(currentMedia);
-         } else if (currentMedia.hasOwnProperty("video")) {
-            article.innerHTML = this.getTemplateVideo(currentMedia);
-         } else {
-            article.innerHTML = "Media non disponible";
-         }
+         //Instancier MediaFactory
+         let mediaFactory = new MediaFactory(currentMedia);
+         article.innerHTML = mediaFactory.getMediaTemplate();        
          elt.appendChild(article)
       })
       //l'ajout d'un like lorsqu'on click sur le coeur.
@@ -160,64 +156,16 @@ export default class PhotographerPage {
       //appel fonction total général likes aprés chargement des medias.
       this.calculTotalLikes();
    }
-
-   
+       
    /**
-    * Création element HTML Image.
-    * @param {objet} imgSelected données json d'une image.
-    * @returns {HTMLElement} template media :image.
-    */
-   getTemplateImage(imgSelected) {
-      let template = ` 
-                  <figure class="media">
-                     <a href="#"><img src="./public/images/${imgSelected.photographerId}/${imgSelected.image}" alt="${imgSelected.alt}"/></a>
-                     <figcaption class="media-footer">
-                        <h2>${imgSelected.title}</h2>
-                        <!--data-like pour savoir est ce que le coueur est deja liké --> 
-                        <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0">
-                           <span>${imgSelected.likes}</span>
-                           <a href="#"><i class="far fa-heart"></i></a>
-                        </div>   
-                     </figcaption>
-                  </figure>
-      `;
-      return template;
-   }
-
-   
-   /**
-    * Création element HTML Video.
-    * @param {objet} videoSelected données json d'une video.
-    * @returns {HTMLElement} template media :video.  
-    */
-   getTemplateVideo(videoSelected) {
-      let template = ` 
-                <figure class="media">
-                  <video  controls role="button">
-                     <source src="./public/images/${videoSelected.photographerId}/${videoSelected.video}" />
-                  </video>
-                  <figcaption class="media-footer">  
-                     <h2>${videoSelected.title}</h2>
-                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${videoSelected.likes}</span> 
-                     <a href="#"><i class="far fa-heart"></i></a>
-                     </div>
-                  </figcaption> 
-               </figure>   
-      `;
-      return template;
-   }
-
-   
-   /**
-    * Permet de récuperer le id (dans l'url)d'un photographre.
+    * Récuperer le id (dans l'url)d'un photographre.
     * @returns {number}
     */
    getPhotographerId() {
       let objetId = window.location.href.split("id=");
-      let ident = parseInt(objetId[1]);
-      return ident;
+      let idPhotographe = parseInt(objetId[1]);
+      return idPhotographe;
    }
-
    
    /**
     * Ajouter un like.
@@ -253,8 +201,7 @@ export default class PhotographerPage {
       })
    }
 
-   
-   /**
+    /**
     * Calcul Total global des likes.
     */
    calculTotalLikes(){

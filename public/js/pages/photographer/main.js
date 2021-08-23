@@ -7,10 +7,11 @@ const fisheyeApi = new FisheyeApi();
 
 
 /**
- * Recupérer la vrai valeur des données de json.???????????
+ * Recupérer la vraie valeur des données de json.
  */
 fisheyeApi.fetchData()
 .then(data => {
+   
    const photographerPage = new PhotographerPage(data);      
 })
 

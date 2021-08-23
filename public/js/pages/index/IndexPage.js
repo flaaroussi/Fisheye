@@ -1,6 +1,14 @@
 
 export default class IndexPage {
 
+   constructor(data){
+      let photographers = data.photographers;  
+      this.displayPhotographers(photographers);
+      //Appliquer un filtre par tag pour n'afficher que les photographes qui ont cet tag.
+      this.initFilter(photographers);
+      //Boutton pour guider l'utilisateur vers le début de la page.
+      this.initScroll();      
+   }
    /**
     * Afficher les 6 photographes.
     * @param {array} listPhotographe liste des photographes.
@@ -13,10 +21,13 @@ export default class IndexPage {
          let article = document.createElement("article");
          article.className = "photographer-card";
          article.innerHTML = this.getTemplatePhotographer(currentPhotographer);
-         // ajouter l'article dans elt HTML.
+         // ajouter l'article dans elt HTML 'article'.
          elt.appendChild(article);
       })
    }
+
+   
+
 
    /**
     * Appliquer un filtre par tag pour n'afficher que les photographes qui ont cet tag.
@@ -28,23 +39,18 @@ export default class IndexPage {
          currentTag.addEventListener('click', e => {
             // Annuler style du tag selectionné.
             listTag.forEach(tag => {
-              if(tag !=currentTag) tag.classList.remove('actived');
+               if (tag != currentTag) tag.classList.remove('actived');
             })
-
             let tagSelected = null;
-
-            if(e.target.classList.value.indexOf('actived') >= 0){
+            if (e.target.classList.value.indexOf('actived') >= 0) {
                e.target.classList.remove('actived');
-            }else{
+            } else {
                //Ajouter la class actived à l'element selectionné.
                e.target.classList.add('actived');
                //Récupérer la valeur du data filtre du tag selectionné.
                tagSelected = e.target.getAttribute('data-filtre');
-
             }
-
             let listPhotographeFiltre = [];
-
             if (tagSelected) {
                photographe.forEach(currentPhotographe => {
                   if (currentPhotographe.tags.indexOf(tagSelected) >= 0) {
@@ -54,8 +60,6 @@ export default class IndexPage {
             } else {
                listPhotographeFiltre = photographe;
             }
-
-            console.log(listPhotographeFiltre)
             // let listPhotographe = photographers.filter(photographer => photographer.tags.includes(tagSelected)).
             this.displayPhotographers(listPhotographeFiltre);
          })
@@ -63,7 +67,7 @@ export default class IndexPage {
    }
 
    /**
-    * Préparation de la structure HTML d'un photographe .
+    * Création de la structure HTML d'un photographe .
     * @param {Objet} photographerChoisi photographer choisi.
     * @returns {HTMLElement}
     */
@@ -88,11 +92,10 @@ export default class IndexPage {
    }
 
    /**
-    * Scroll pour guider l'utilisateur vers le début de la page.
+    * Botton pour guider l'utilisateur vers le début de la page.
     */
    initScroll() {
       window.addEventListener('scroll', event => {
-         console.log(window.scrollY)
          let elem = document.getElementById('access_main');
          if (window.scrollY > 150) {
             elem.style.display = "block";

@@ -10,16 +10,15 @@ export default class Caroussel {
     */
    
    constructor(){
-      let toto = 1;
-      // liste des medias d un photoraphe
+      // liste des medias d'un photoraphe
       this.carousselMedias.forEach((currentElement, currentIndex) => {
-         // attacher l'event 'click' sur chaque media pour l afficher dans le carrousse.l 
+         // Attacher l'event 'click' sur chaque media pour l'afficher dans le carroussel. 
          currentElement.addEventListener("click", event => {   
             // Ouvrir le caroussel         
             this.modal = new Modal(0);
-            //afficher le media sélectionné qui est indexé par currentIndex
+            //Afficher le media sélectionné qui est indexé par currentIndex
             this.showMedia(currentIndex);
-            //Stocker l index du media selectionné.
+            //Stocker l'index du media selectionné.
             this.lastIndexSelected = currentIndex;
          })
       });
@@ -36,7 +35,7 @@ export default class Caroussel {
          this.showMediaPrev();
       })
 
-      //Activer les touches de clavier.
+      //Activer les touches du clavier.
       document.addEventListener('keydown', event => {
          switch (event.key) {
             case "ArrowRight":
@@ -94,7 +93,7 @@ export default class Caroussel {
          let cParent = document.getElementById('caroussel_photographer_media');
          cParent.innerHTML = "";
          cParent.appendChild(imgVideo);
-         //afficher le titre du media
+         //Afficher le titre du media
          let carousselTitreMedia = document.getElementById('caroussel_photographer_titre');
          let currentTitreMedia = mediaSelected.querySelector('h2').textContent;
          carousselTitreMedia.textContent = currentTitreMedia
