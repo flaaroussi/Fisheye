@@ -12,8 +12,8 @@ export default class VideoFactory{
                   </video>
                   <figcaption class="media-footer">  
                      <h2>${this.videoSelected.title}</h2>
-                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span>${this.videoSelected.likes}</span> 
-                     <a href="#"><i class="far fa-heart"></i></a>
+                     <div class="totalLikes" aria-label="likes" title="J'aime" data-like="0"><span class="media-nbr-likes">${this.videoSelected.likes}</span> 
+                     <a ><i class="far fa-heart"></i></a>
                      </div>
                   </figcaption> 
                </figure>   

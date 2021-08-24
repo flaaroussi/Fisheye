@@ -1,14 +1,14 @@
 import FisheyeApi from "../../FisheyeApi.js";
 import IndexPage from "./IndexPage.js";
 
-//creation d'une instance de l'api.
+//Creation d'une instance de l'api.
 const fisheyeApi = new FisheyeApi();
 
-//retourner les données de json.
+//Retourner les données de json.
 //Le résultat json étant une Promise, nous le retournons et récupérons sa vraie valeur dans la fonction then() .
 fisheyeApi.fetchData()
 .then(data => {
-   //Afficher la liste des photographes.
+   //Créer une instance =>Afficher la liste des photographes.
    const indexPage = new IndexPage(data);   
 })
 

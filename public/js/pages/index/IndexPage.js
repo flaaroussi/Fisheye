@@ -1,14 +1,17 @@
-
+/**
+ * Class pour la gestion de la page index
+ */
 export default class IndexPage {
 
-   constructor(data){
-      let photographers = data.photographers;  
+   constructor(data) {
+      let photographers = data.photographers;
       this.displayPhotographers(photographers);
       //Appliquer un filtre par tag pour n'afficher que les photographes qui ont cet tag.
       this.initFilter(photographers);
       //Boutton pour guider l'utilisateur vers le début de la page.
-      this.initScroll();      
+      this.initScroll();
    }
+
    /**
     * Afficher les 6 photographes.
     * @param {array} listPhotographe liste des photographes.
@@ -25,9 +28,6 @@ export default class IndexPage {
          elt.appendChild(article);
       })
    }
-
-   
-
 
    /**
     * Appliquer un filtre par tag pour n'afficher que les photographes qui ont cet tag.
@@ -60,7 +60,6 @@ export default class IndexPage {
             } else {
                listPhotographeFiltre = photographe;
             }
-            // let listPhotographe = photographers.filter(photographer => photographer.tags.includes(tagSelected)).
             this.displayPhotographers(listPhotographeFiltre);
          })
       })

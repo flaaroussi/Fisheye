@@ -387,28 +387,6 @@ textarea {
   }
 }
 
-/* nav{
-  //@include responsive(smartphone){
-    align-self: flex-end; /* Seul ce bloc sera aligné à la fin */
-/*
-.lien-inscrire{
-  height: 100px !important;
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
-  position: absolute;
-  top: 0;
-  right:3%;
-}
-.logo_nav nav ul li{
-  height: 40px;
-  padding-top: 10px;
-  padding-bottom: 0px;
-  margin-bottom: 20px;
-}
-.bar-filtres{
-  flex-wrap: wrap;
-}
-*/
 .dashboard-photographers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

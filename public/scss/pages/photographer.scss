@@ -8,7 +8,6 @@
    h2{
       color: $color2;
       font-size: 2rem;
-      
       margin-bottom: 1rem;
    }
    .localisation{
@@ -24,7 +23,6 @@
    &__direction{
       @include flex (row, space-between, center);
    }
- 
 }
 
 .h2-homepage{
@@ -33,7 +31,6 @@
 
 .photographer-infos{
    display: flex;
-
    .modal-btn{
       margin-left: 2rem;
       width: 8rem;
@@ -65,6 +62,4 @@
    }
     //responsive design page photographe
     @include hidden;
-   
-    
 }

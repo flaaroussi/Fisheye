@@ -4,19 +4,18 @@ export default class Caroussel {
    carousselMedias = document.querySelectorAll(".media");
    lastIndexSelected = 0;
    modal = null;
-   
+
    /**
-    * 
+    * constructor
     */
-   
-   constructor(){
+   constructor() {
       // liste des medias d'un photoraphe
       this.carousselMedias.forEach((currentElement, currentIndex) => {
          // Attacher l'event 'click' sur chaque media pour l'afficher dans le carroussel. 
-         currentElement.addEventListener("click", event => {   
+         currentElement.addEventListener("click", event => {
             // Ouvrir le caroussel         
             this.modal = new Modal(0);
-            //Afficher le media sélectionné qui est indexé par currentIndex
+            //Afficher le media sélectionné qui est indexé par currentIndex.
             this.showMedia(currentIndex);
             //Stocker l'index du media selectionné.
             this.lastIndexSelected = currentIndex;
@@ -45,33 +44,35 @@ export default class Caroussel {
                this.showMediaPrev();
                break;
             case "Escape":
-              if(this.modal) this.modal.doCloseModal();
+               if (this.modal) this.modal.doCloseModal();
                break;
          }
       })
    }
-
+   
    /**
-    * 
+    * Afficher media suivant.
     */
-   showMediaNext(){
+   showMediaNext() {
       if (this.lastIndexSelected >= 0 && this.lastIndexSelected < this.carousselMedias.length) {
          this.lastIndexSelected++;
          this.showMedia(this.lastIndexSelected);
-         
       }
    }
 
-   showMediaPrev(){
+   /**
+    * Afficher media précédent.
+    */
+   showMediaPrev() {
       if (this.lastIndexSelected > 0) {
          this.lastIndexSelected--;
          this.showMedia(this.lastIndexSelected);
       }
    }
 
-   /**????????????????????
+   /**
     * Afficher medias d'un photographe selon index selectionné.
-    * @param {number} index :numero du media selectionné.
+    * @param {number} index :numéro du media selectionné.
     */
    showMedia(index) {
       if (index >= 0 && index < this.carousselMedias.length) {
@@ -93,7 +94,7 @@ export default class Caroussel {
          let cParent = document.getElementById('caroussel_photographer_media');
          cParent.innerHTML = "";
          cParent.appendChild(imgVideo);
-         //Afficher le titre du media
+         //Afficher le titre du media.
          let carousselTitreMedia = document.getElementById('caroussel_photographer_titre');
          let currentTitreMedia = mediaSelected.querySelector('h2').textContent;
          carousselTitreMedia.textContent = currentTitreMedia

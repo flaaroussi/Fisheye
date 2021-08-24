@@ -6,82 +6,89 @@ export default class Modal {
   modalbg = null;
   modalClose = null;
 
-
   /**
    * 
    * @param {Number} isModal  0 ou bien 1.
    */
-
-  constructor(isModal){
-    // Afficher carrousel.
-      if(isModal == '0'){
-        this.modalbg = document.querySelector(".ligthbox-modal");
-        this.modalClose = document.querySelector(".ligthbox-modal .close");
-        this.initCarousselModal();
-        this.openModal();
-      }else{
-        //Afficher Modal.
-        this.modalBtn = document.querySelector(".modal-btn");
-        this.modalbg = document.querySelector(".modal");
-        this.modalClose = document.querySelector(".modal .close");
-        this.initModal();
-      }
+  constructor(isModal) {
+    // Afficher le carrousel.
+    if (isModal == '0') {
+      this.modalbg = document.querySelector(".ligthbox-modal");
+      this.modalClose = document.querySelector(".ligthbox-modal .close");
+      this.initCarousselModal();
+      this.openModal();
+    } else {
+      //Afficher le Modal.
+      this.modalBtn = document.querySelector(".modal-btn");
+      this.modalbg = document.querySelector(".modal");
+      this.modalClose = document.querySelector(".modal .close");
+      this.initModal();
+    }
   }
-  
+
   /**
-   *  
+   * Initialiser le modal.
    */
-  initModal() {
-    //Vider le formulaire.
-    this.formElt.reset();
+  initModal() {    
     this.modalBtn.addEventListener("click", event => {
+      //Vider le formulaire.
+      this.formElt.reset();
       this.openModal();
     });
     this.modalClose.addEventListener("click", event => {
       this.doCloseModal();
     })
     document.addEventListener('keydown', event => {
-      switch (event.key) {        
-         case "Escape":
-            this.doCloseModal();
-            break;
+      switch (event.key) {
+        case "Escape":
+          this.doCloseModal();
+          break;
       }
-   })
+    })
     //Initialisation des controles.
-      this.controleForm();
+    this.controleForm();
   }
 
-  initCarousselModal(){
+  initCarousselModal() {
     this.modalClose.addEventListener("click", event => {
       this.doCloseModal();
     })
   }
-
-  openModal() {    
+ 
+  /**
+   * Ouvre le modal
+   */
+  openModal() {
     this.modalbg.style.display = "block";
-    document.querySelector('.bground').setAttribute("aria-hidden","false");
-    document.querySelector('.photographe-main').setAttribute("aria-hidden","true");
-    document.querySelector('.header').setAttribute("aria-hidden","true");
+    document.querySelector('.bground').setAttribute("aria-hidden", "false");
+    document.querySelector('.photographe-main').setAttribute("aria-hidden", "true");
+    document.querySelector('.header').setAttribute("aria-hidden", "true");
   }
 
+  /**
+   * Ferme le modal
+   */
   doCloseModal() {
     this.modalbg.style.display = "none";
-    document.querySelector('.bground').setAttribute("aria-hidden","true");
-    document.querySelector('.photographe-main').setAttribute("aria-hidden","false");
-    document.querySelector('.header').setAttribute("aria-hidden","false");
+    document.querySelector('.bground').setAttribute("aria-hidden", "true");
+    document.querySelector('.photographe-main').setAttribute("aria-hidden", "false");
+    document.querySelector('.header').setAttribute("aria-hidden", "false");
   }
 
-  //control & validation Modal.
-  //DOM Elements.
-  //On pointe sur les elts de la DOM.
+  /***************************************************Fourmulaire************************************************ */
+  /**
+   * Contrôl & validation du formulaire.
+   */
   firstNameElt = document.getElementById("first-name");
   lastNameElt = document.getElementById("last-name");
   emailElt = document.getElementById("email");
   msgElt = document.getElementById("message");
   formElt = document.querySelector(".form")
 
+  /**
+   *  Attachement de l'évenement (keyup + keypress = input) aux inputs 
+   */
   controleForm() {
-    
     this.firstNameElt.addEventListener("input", event => {
       this.validatePrenom(this.firstNameElt);
     })
@@ -94,11 +101,11 @@ export default class Modal {
     this.msgElt.addEventListener("input", event => {
       this.validateMsg(this.msgElt);
     })
-    this.formElt.addEventListener("submit", event =>{
+    this.formElt.addEventListener("submit", event => {
       // Empêcher l'envoi par défaut du formulaire lors du click sur envoyer
       event.preventDefault();
       this.validate(this.formElt);
-    })   
+    })
   }
 
   /**
@@ -106,7 +113,6 @@ export default class Modal {
    * @param {HTMLElement} prenomElt input où saisir le prénom 
    * @returns {Boolean} true
    */
-
   validatePrenom(prenomElt) {
     let prenom = prenomElt.value;
     let regexPrenom = new RegExp("^[a-zA-Z]{2,}$");
@@ -129,7 +135,6 @@ export default class Modal {
    * @param {HTMLElement} prenomElt input où saisir le nom 
    * @returns {Boolean} true
    */
-
   validateNom(nomElt) {
     let nom = nomElt.value;
     let regexNom = new RegExp("^[a-zA-Z]{2,}$");
@@ -144,7 +149,7 @@ export default class Modal {
     }
     return true;
   }
-  
+
   /**
    * Validation de l'input e mail.
    * @param {HTMLElement} prenomElt input où saisir l'e mail
@@ -164,11 +169,11 @@ export default class Modal {
     return true;
   }
 
-   /**
-   * Validation de la testerea.
-   * @param {HTMLElement} prenomElt input où saisir un message
-   * @returns {Boolean} true
-   */ 
+  /**
+  * Validation de la testerea.
+  * @param {HTMLElement} prenomElt input où saisir un message
+  * @returns {Boolean} true
+  */
   validateMsg(msgElt) {
     let msg = msgElt.value;
     let msgErrorMsg = document.getElementById("msg_error");
@@ -183,22 +188,25 @@ export default class Modal {
   }
 
   /**
-   * 
+   * Validation globale du formulaire
    * @param {Formulaire} formContact 
    * @returns {Boolean} false
    */
-
-  validate(formContact) {
+   validate(formContact) {
     let isValidatePrenom = this.validatePrenom(formContact.nom);
     let isValidateNom = this.validateNom(formContact.prenom);
     let isValidateEmail = this.validateEmail(formContact.email);
     let isValidateMsg = this.validateMsg(formContact.message);
     if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg) {
-      this.doCloseModal();             
-      alert("Merci! Votre message a été envoyé.");
-      return false;             
-    } else {  
-      return false; 
+      this.doCloseModal();
+      alert("Merci! Votre message a été envoyé."+
+            "\nNom : " + this.firstNameElt.value +
+            "\nPrénom : " + this.lastNameElt.value +
+            "\nAdresse email : " + this.emailElt.value+
+            "\nMessage : " + this.msgElt.value);
+      return false;
+    } else {
+      return false;
     }
   }
 }

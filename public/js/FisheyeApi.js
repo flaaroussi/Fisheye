@@ -1,6 +1,6 @@
-
-//Etape 1: Fetch api :
-
+/**
+ * Class pour API.
+ */
 export default class FisheyeApi {
    /**
     * Récuperer les données à partir du fichier json on utilsant l'API fetch.
