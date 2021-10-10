@@ -50,7 +50,7 @@ a {
   display: flex;
   /** Si on a n'a pas besoin de flex direction cet attribut ne dois pas etre affiché*/
   flex-direction: row;
-  /** si le pramettre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
+  /** si le parametre  $justify-content égale à 0 >> on utilise pas l'attribut justify-content */
   justify-content: center;
   align-items: center;
 }

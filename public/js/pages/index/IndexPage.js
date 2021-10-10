@@ -45,7 +45,7 @@ export default class IndexPage {
             if (e.target.classList.value.indexOf('actived') >= 0) {
                e.target.classList.remove('actived');
             } else {
-               //Ajouter la class actived à l'element selectionné.
+               //Ajouter la classe 'actived' à l'element selectionné.
                e.target.classList.add('actived');
                //Récupérer la valeur du data filtre du tag selectionné.
                tagSelected = e.target.getAttribute('data-filtre');

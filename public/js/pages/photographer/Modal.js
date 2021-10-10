@@ -197,7 +197,7 @@ export default class Modal {
     let isValidateNom = this.validateNom(formContact.prenom);
     let isValidateEmail = this.validateEmail(formContact.email);
     let isValidateMsg = this.validateMsg(formContact.message);
-    if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg) {
+    if (isValidatePrenom && isValidateNom && isValidateEmail && isValidateMsg){
       this.doCloseModal();
       alert("Merci! Votre message a été envoyé."+
             "\nNom : " + this.firstNameElt.value +
