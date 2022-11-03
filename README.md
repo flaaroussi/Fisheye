@@ -1,6 +1,6 @@
-# FaizaLaaroussi_6_16072021
-<p>Projet N° 6 : Créez un site accessible pour une plateforme de photographes</p>
-<p>Lien du site : https://flaaroussi.github.io/FaizaLaaroussi_6_16072021/</p> 
+# Fisheye
+ Créez un site accessible pour une plateforme de photographes</p>
+ Lien du site : https://flaaroussi.github.io/FaizaLaaroussi_6_16072021/</p> 
 
 
 ## Compétances acquises dans ce projet :
