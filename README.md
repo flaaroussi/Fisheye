@@ -1,7 +1,9 @@
 # Fisheye
- Créez un site accessible pour une plateforme de photographes</p>
- Lien du site : https://flaaroussi.github.io/FaizaLaaroussi_6_16072021/</p> 
-
+  Fisheye est une plateforme d'exposition pour photographes freelance professionnels. Chaque photographe bénéficie d'une visibilité sur la page d'accueil et dispose d'un   espace professionnel avec galerie et formulaire de contact.
+  Lien du site : https://flaaroussi.github.io/FaizaLaaroussi_6_16072021/
+  
+## Besoin
+ Réalisatin d'une aaplication web dynamique.
 
 ## Compétances acquises dans ce projet :
    * Développer une application web modulaire avec des design patterns.
