@@ -2,12 +2,26 @@
  * Class pour la gestion de la page index
  */
 export default class IndexPage {
-
+  
+   /**
+    * Initialiser la page avec les données des photographes
+    * Afficher les données des photographes
+    * Filtrer les données des photographes
+    * Bouton de retour en haut de la page
+    * @param {*} data 
+    */
    constructor(data) {
+      //extraire la liste des données photographers à partir de l'objet data et la stocker dans la variable photographers                       
       let photographers = data.photographers;
+
+      console.log(data);
+
+      //Afficher la liste
       this.displayPhotographers(photographers);
+      
       //Appliquer un filtre par tag pour n'afficher que les photographes qui ont cet tag.
       this.initFilter(photographers);
+      
       //Boutton pour guider l'utilisateur vers le début de la page.
       this.initScroll();
    }
@@ -17,14 +31,17 @@ export default class IndexPage {
     * @param {array} listPhotographe liste des photographes.
     */
    displayPhotographers(listPhotographe) {
+      //recupérer l'element HTML 
       let elt = document.getElementById("dashboard_photographers");
+      //vider le contenu d' elt
       elt.innerHTML = "";
+      //iterer à travers chaque photographe
       listPhotographe.forEach(currentPhotographer => {
-         //Creation des blocs des 6 photographes.
+         //Pour chaque photographe on crée un article dans le DOM
          let article = document.createElement("article");
          article.className = "photographer-card";
          article.innerHTML = this.getTemplatePhotographer(currentPhotographer);
-         // ajouter l'article dans elt HTML 'article'.
+         // ajouter l'article comme enfant dans elt HTML 'article'.
          elt.appendChild(article);
       })
    }
@@ -72,7 +89,7 @@ export default class IndexPage {
     */
    getTemplatePhotographer(photographerChoisi) {
       let template = `  
-            <a href="photographer-page.html?id=${photographerChoisi.id}">
+            <a href="photographer-page.html?id=${photographerChoisi.id}" data-testid="photographer_${photographerChoisi.id}">
             <figure >
                <img src="./public/images/Photographers/${photographerChoisi.portrait}" alt="${photographerChoisi.alt}"/>
                <figcaption><h2 class="h2-homepage">${photographerChoisi.name}</h2></figcaption>
@@ -91,7 +108,7 @@ export default class IndexPage {
    }
 
    /**
-    * Botton pour guider l'utilisateur vers le début de la page.
+    * Botton pour retourner l'utilisateur vers le début de la page.
     */
    initScroll() {
       window.addEventListener('scroll', event => {

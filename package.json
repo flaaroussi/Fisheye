@@ -4,9 +4,26 @@
   "description": "\"projet6.openclassroum\"",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./public/scss/main.scss:./public/css/main.css "
+    "sass": "sass --watch ./public/scss/main.scss:./public/css/main.css ",
+    "e2e": "npx playwright test --ui",
+    "e2e:ci": "npx playwright test"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flaaroussi/FaizaLaaroussi_6_16072021.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/flaaroussi/FaizaLaaroussi_6_16072021/issues"
+  },
+  "homepage": "https://github.com/flaaroussi/FaizaLaaroussi_6_16072021#readme",
+  "dependencies": {
+    "playwright-chromium": "^1.40.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.10.4"
+  }
 }
-
